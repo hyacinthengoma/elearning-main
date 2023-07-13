@@ -1,0 +1,192 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+
+
+
+
+    <body>
+    <!-- preloader area start -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-inner">
+            <div class="loader">
+            </div>
+        </div>
+    </div>
+    <!-- preloader area end -->
+
+    <!--  search Popup start -->
+    <div class="body-overlay" id="body-overlay"></div>
+    <div class="search-popup" id="search-popup">
+        <form action="index.html" class="search-form">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search.....">
+            </div>
+            <button class="close-btn border-none"><i class="fas fa-search"></i></button>
+        </form>
+    </div>
+    <!-- Search Popup End -->
+
+    <main class="page-wrapper">
+        <!-- nav area start here -->
+        <div class="nav-area-wrapper-relative">
+
+        </div>
+        <!-- nav area end here -->
+
+        <!-- about page start here  -->
+        <div class="contact-us-wrapper single-page-section-top-space single-page-section-bottom-space">
+            <!-- breadcrumb area start here  -->
+            <div class="breadcrumb-wrap style-01">
+                <div class="container custom-container-01">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="breadcrumb-content">
+                                <h3 class="title">Contactez-nous</h3>
+                                <!--                                <p class="details">We have professional alliance's with leading Universities and-->
+                                <!--                                    Colleges-->
+                                <!--                                    around the world.-->
+                                <!--                                </p>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- breadcrumb area end here  -->
+
+            <!-- contact form start hare  -->
+            <section class="contact-form-area-wrapper section-bottom-space">
+                <div class="container custom-container-01">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="apply-form-inner">
+                                <div class="row justify-content-between">
+                                    <div class="col-lg-5">
+                                        <div class="contact-address">
+                                            <h3 class="title">Informations de contact</h3>
+
+                                            <ul class="ul contact-address-list">
+                                                <li class="single-address-item">
+                                                    <span class="icon-wrap color-01">
+                                                        <i class="fa-sharp fa-solid fa-location-dot icon"></i>
+                                                    </span>
+                                                    <span class="text">2972 Westheimer Rd. Santa Ana, Illinoi
+                                                        85486, India</span>
+                                                </li>
+                                                <li class="single-address-item">
+                                                    <span class="icon-wrap color-02">
+                                                        <i class="fa-solid fa-phone icon"></i>
+                                                    </span>
+                                                    <span class="text">(270) 555-0117 <br>
+                                                        (270) 589-7395</span>
+                                                </li>
+                                                <li class="single-address-item">
+                                                    <span class="icon-wrap color-03">
+                                                        <i class="fa-solid fa-envelope-open icon"></i>
+                                                    </span>
+                                                    <span class="text">nathan.roberts@example.com <br>
+                                                        headoffice@example.com</span>
+                                                </li>
+                                            </ul>
+
+                                            <ul class="ul social-media-list style-01 color-02">
+                                                <li class="single-social-item">
+                                                    <a href="#" tabindex="-1">
+                                                        <i class="fa-brands fa-instagram icon"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="single-social-item">
+                                                    <a href="#" tabindex="-1">
+                                                        <i class="fa-brands fa-facebook-f icon"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="single-social-item">
+                                                    <a href="#" tabindex="-1">
+                                                        <i class="fa-brands fa-youtube icon"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="single-social-item">
+                                                    <a href="#" tabindex="-1">
+                                                        <i class="fa-brands fa-linkedin-in icon"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-7">
+                                        <div class="contact-form">
+                                            <form class="form">
+                                                <div class="part">
+                                                    <h5 class="title">Merci de remplir l'ensemble des champs ci-dessous</h5>
+                                                    <div class="form-element">
+                                                        <div class="row">
+                                                            <div class="col-lg-6">
+                                                                <i class="fa-solid fa-user"></i>
+                                                                <input type="text" placeholder="Full name" required="">
+                                                            </div>
+                                                            <div class="col-lg-6">
+                                                                <i class="fa-solid fa-envelope-open"></i>
+                                                                <input type="email" placeholder="Email address"
+                                                                       required="">
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-element">
+                                                        <div class="row">
+                                                            <div class="col-lg-6">
+                                                                <i class="fa-solid fa-phone"></i>
+                                                                <input type="tel" placeholder="Phone number"
+                                                                       required="">
+                                                            </div>
+                                                            <div class="col-lg-6">
+                                                                <i class="fa-solid fa-user"></i>
+                                                                <input type="text" placeholder="Full name" required="">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-element">
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                <textarea class="textarea"
+                                                                          placeholder="Write description..."
+                                                                          rows="10"></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-submit text-right">
+                                                    <button type="submit" class="btn-common btn-active">Envoyer le message
+                                                    </button>
+                                                </div>
+
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- contact form end hare  -->
+
+            <!-- map area start hare  -->
+            <div class="map-wrapper section-top-space">
+                <iframe class="w-100"
+                        src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d116838.78142003674!2d90.35554992826201!3d23.775466805757!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m0!4m5!1s0x3755c74493e3ad33%3A0xd8d84b987eddb825!2s199%2C%20Venus%20Complex%2C%2012th%20Floor%20Kha-199%2F2%2C%204%20Bir%20Uttam%20Rafiqul%20Islam%20Ave%2C%20Dhaka%201212!3m2!1d23.7754826!2d90.4255903!5e0!3m2!1sen!2sbd!4v1663127596682!5m2!1sen!2sbd"
+                        height="510" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <!-- map area end hare  -->
+        </div>
+        <!-- about page end here  -->
+
+        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            footer area start Here
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+
+        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+{% endblock %}

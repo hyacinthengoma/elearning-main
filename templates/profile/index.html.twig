@@ -1,0 +1,118 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProfileController!{% endblock %}
+
+{% block content %}
+<body>
+<div class="preloader" id="preloader">
+    <div class="preloader-inner">
+        <div class="loader">
+        </div>
+    </div>
+</div>
+<div class="body-overlay" id="body-overlay"></div>
+<div class="search-popup" id="search-popup">
+    <form action="index.html" class="search-form">
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search.....">
+        </div>
+        <button class="close-btn border-none"><i class="fas fa-search"></i></button>
+    </form>
+</div>
+<!-- Search Popup End -->
+
+<main class="page-wrapper">
+    <div class="nav-area-wrapper-relative">
+
+    </div>
+
+
+
+    <div class="instructors-wrapper single-page-section-top-space single-page-section-bottom-space">
+
+        <!-- breadcrumb area start here  -->
+        <div class="breadcrumb-wrap style-01">
+            <div class="container custom-container-01">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="breadcrumb-content">
+                            <h1 class="title">Votre profil</h1>
+                            <p class="details">Veuillez selectionner une des options pour passer à l'étape suivante</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- breadcrumb area end here  -->
+
+        <!-- teem area start here  -->
+        <section class="our-team-area-wrapper">
+            <div class="our-team-inner">
+                <div class="container custom-container-01">
+                    <div class="row column-gap-50">
+
+
+                        <div class="col-md-6 col-lg-6 col-xl-4">
+                            <div class="single-team-item style-03">
+                                <div class="thumbnail">
+                                    <img src="assets/img/team/style-02/01.png" alt="team image">
+
+                                </div>
+
+                                <div class="content">
+                                    <h4 class="title">
+                                        <a href="{{ path('register_learners') }}" tabindex="-1">Je suis apprenant</a>
+                                    </h4>
+{#                                    <p class="designation">Consultants, Eduxon</p>#}
+
+                                    <p class="paragraph">je souhaite découvrir la plateforme, prendre des cours particuliers et/ou des modules de formations en E-learning</p>
+                                </div>
+
+                                <div class="hover-content">
+                                    <div class="btn-wrap">
+                                        <a href="{{ path('register_learners') }}">
+                                            <div class="btn-common btn-active">Apprenant</div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="col-md-6 col-lg-6 col-xl-4">
+                            <div class="single-team-item style-03">
+                                <div class="thumbnail">
+                                    <img src="assets/img/team/style-02/02.png" alt="team image">
+
+                                </div>
+
+                                <div class="content">
+                                    <h4 class="title">
+                                        <a href="{{ path('register_teachers') }}" tabindex="-1">Je suis enseignant</a>
+                                    </h4>
+{#                                    <p class="designation">Consultants, Eduxon</p>#}
+
+                                    <p class="paragraph">Je souhaite dispenser des cours particuliers à des apprenants, mais aussi profiter des modules de formation </p>
+                                </div>
+
+                                <div class="hover-content">
+                                    <div class="btn-wrap">
+                                        <a href="{{ path('register_teachers') }}">
+                                            <div class="btn-common btn-active">Enseignant</div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+
+</main>
+</body>
+{% endblock %}

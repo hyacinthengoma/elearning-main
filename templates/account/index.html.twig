@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon compte{% endblock %}
+
+{% block content %}
+<body>
+
+
+<div class="preloader" id="preloader">
+    <div class="preloader-inner">
+        <div class="loader">
+        </div>
+    </div>
+</div>
+<!-- preloader area end -->
+
+<!--  search Popup start -->
+<div class="body-overlay" id="body-overlay"></div>
+<div class="search-popup" id="search-popup">
+    <form action="index.html" class="search-form">
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search.....">
+        </div>
+        <button class="close-btn border-none"><i class="fas fa-search"></i></button>
+    </form>
+</div>
+<!-- Search Popup End -->
+
+<main class="page-wrapper">
+    <div class="nav-area-wrapper-relative">
+
+    </div>
+
+
+
+
+    <h1> Mon compte </h1>
+    <h2>Bienvenue {{ app.user.firstname }} {{ app.user.lastname }}</h2>
+
+    {{ dump(app.user) }}
+
+</main>
+</body>
+
+{% endblock %}

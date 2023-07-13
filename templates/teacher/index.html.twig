@@ -1,0 +1,177 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+
+
+
+
+    <body>
+    <!-- preloader area start -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-inner">
+            <div class="loader">
+            </div>
+        </div>
+    </div>
+    <!-- preloader area end -->
+
+    <!--  search Popup start -->
+    <div class="body-overlay" id="body-overlay"></div>
+    <div class="search-popup" id="search-popup">
+        <form action="index.html" class="search-form">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search.....">
+            </div>
+            <button class="close-btn border-none"><i class="fas fa-search"></i></button>
+        </form>
+    </div>
+    <!-- Search Popup End -->
+
+    <main class="page-wrapper">
+        <!-- nav area start here -->
+        <div class="nav-area-wrapper-relative">
+
+        </div>
+        <!-- nav area end here -->
+
+        <!-- about page start here  -->
+        <div class="course-details-wrapper single-page-section-top-space single-page-section-bottom-space">
+            <div class="container custom-container-01">
+                <div class="row">
+                    <div class="col-lg-7 col-xl-8">
+                        <!-- breadcrumb area start here  -->
+                        <div class="breadcrumb-wrap style-01">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="breadcrumb-content">
+                                        <h3 class="title">Nos professeurs</h3>
+                                        <p class="details">Découvrez l'ensemble de nos professeurs</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {{ dump(teachers) }}
+
+                        {% for teacher in teachers %}
+                            {{ teacher.id }}
+                            {{ teacher.description.descriptionPreview }}
+
+                        {% endfor %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        {#                        {% set role = ['enseignant', 'éleve', 'colégien', 'etudiant', 'parent'] %}#}
+                        {#                        {{ form|join(', ') }}#}
+                        {#                        {{ form(form) }}#}
+
+
+
+
+                        {#      {{ form_start(form) }}
+
+                        {{ notification }}
+                        <div class="row col-md-12">
+                            <div class="col-md-12">{{ form_row(form.firstname) }}</div>
+                            <div class="col-md-12">{{ form_row(form.lastname) }}</div>
+                            <div class="col-md-12">{{ form_row(form.email) }}</div>
+                            <div class="col-md-12">{{ form_row(form.password) }}</div>
+
+                            {{ form_row(form.submit) }}
+                        </div>
+                        {{ form_row(form._token) }}
+                        {{ form_rest(form) }}
+                        {{ form_end(form) }}
+                        #}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <section class="our-team-area-wrapper">
+            <div class="our-team-inner">
+                <div class="container custom-container-01">
+                    <div class="row column-gap-50">
+                    {% for teacher in teachers %}
+                        <div class="col-md-6 col-lg-6 col-xl-4">
+                            <div class="single-team-item style-03">
+                                <div class="thumbnail">
+                                    <a href="{{ path('teacher', {'slug' : teacher.slug}) }}"> <img src="/uploads/{{ teacher.illustration }}" alt="{{ teacher.name }}"> </a>
+
+                                </div>
+
+                                <div class="content">
+                                    <h4 class="title">
+                                        <a href="#" tabindex="-1">{{ teacher.name }}</a>
+                                    </h4>
+                                    <p class="designation">Consultants, Eduxon</p>
+
+                                    <p class="paragraph"> {{ teacher.description.descriptionPreview }}</p>
+                                </div>
+
+                                <div class="hover-content">
+                                    <div class="btn-wrap">
+                                        <div class="btn-common btn-active"> <a href="{{ path('teacher_info', {'slug' : teacher.slug}) }}">En savoir plus</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {% endfor %}
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="pagination">
+                                <ul class="pagination-list">
+                                    <li>
+                                        <a href="#" class="page-number able left-arrow">
+                                            PREV
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="page-number current">01</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="page-number">02</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="page-number">03</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="page-number able right-arrow">
+                                            NEXT
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- about page end here  -->
+
+        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            footer area start Here
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    </main>
+    </body>
+
+
+{% endblock %}

@@ -1,0 +1,1328 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+
+
+    <body>
+    <!-- preloader area start -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-inner">
+            <div class="loader">
+            </div>
+        </div>
+    </div>
+    <!-- preloader area end -->
+
+    <!--  search Popup start -->
+    <div class="body-overlay" id="body-overlay"></div>
+    <div class="search-popup" id="search-popup">
+        <form action="index.html" class="search-form">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search.....">
+            </div>
+            <button class="close-btn border-none"><i class="fas fa-search"></i></button>
+        </form>
+    </div>
+    <!-- Search Popup End -->
+
+    <main class="page-wrapper">
+        <!-- nav area start here -->
+        <div class="nav-area-wrapper-relative">
+
+        </div>
+        <!-- nav area end here -->
+
+        <!-- about page start here  -->
+        <div class="all-course-wrapper single-page-section-top-space single-page-section-bottom-space">
+            <!-- breadcrumb area start here  -->
+            <div class="breadcrumb-wrap style-01">
+                <div class="container custom-container-01">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="breadcrumb-content">
+                                <h3 class="title">Nous avons 324 cours au total</h3>
+                                <p class="details">Nous sommes partenanires d'enseignants professionnels, qualifiés et compétents, issues des principales universités, colleges et primaires du pays
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {{ dump(trainings) }}
+            <!-- breadcrumb area end here  -->
+
+            <!-- course area start hare  -->
+            <section class="course-area-wrapper">
+                <div class="container custom-container-01">
+                    <div class="row">
+                        <div class="col-lg-4 col-xl-3">
+                            <div class="widget-wrapper">
+                                <div class="single-widget-item">
+                                    <h4 class="title">Domaines</h4>
+                                    <div class="form">
+                                        <div class="form-element">
+                                            <select name="" id="" style="display: none;">
+                                                <option disabled="" selected="" hidden="">Choisissez un domaine
+                                                </option>
+                                                <option value="Canada">Web Design</option>
+                                                <option value="America">Hacking</option>
+                                                <option value="London">Design</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="single-widget-item">
+                                    <h4 class="title">Durée</h4>
+
+                                    <ul class="category-wrap">
+                                        <li class="single-category-item">
+                                            <label class="radio-btn-wrapper">
+                                                <input type="checkbox" name="category" class="checkbox">
+                                                <span class="checkmark"></span>
+                                                <span class="content">
+                                                    <span class="left">0-5 hours</span>
+                                                </span>
+                                            </label>
+                                        </li>
+
+                                        <li class="single-category-item">
+                                            <label class="radio-btn-wrapper">
+                                                <input type="checkbox" name="category" class="checkbox">
+                                                <span class="checkmark"></span>
+                                                <span class="content">
+                                                    <span class="left">0-5 hours</span>
+                                                </span>
+                                            </label>
+                                        </li>
+
+                                        <li class="single-category-item">
+                                            <label class="radio-btn-wrapper">
+                                                <input type="checkbox" name="category" class="checkbox">
+                                                <span class="checkmark"></span>
+                                                <span class="content">
+                                                    <span class="left">0-5 hours</span>
+                                                </span>
+                                            </label>
+                                        </li>
+
+                                    </ul>
+                                </div>
+
+                                <div class="single-widget-item">
+                                    <h4 class="title">Matières</h4>
+                                    <div class="form">
+                                        <div class="form-element">
+                                            <select name="" id="" style="display: none;">
+                                                <option disabled="" selected="" hidden="">Choisissez un domaine
+                                                </option>
+                                                <option value="Canada">Web Design</option>
+                                                <option value="America">Hacking</option>
+                                                <option value="London">Design</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="single-widget-item">
+                                    <h4 class="title">Prix</h4>
+
+                                    <ul class="category-wrap">
+                                        <li class="single-category-item">
+                                            <label class="radio-btn-wrapper">
+                                                <input type="checkbox" name="category" class="checkbox">
+                                                <span class="checkmark"></span>
+                                                <span class="content">
+                                                    <span class="left">Payant</span>
+                                                </span>
+                                            </label>
+                                        </li>
+
+                                        <li class="single-category-item">
+                                            <label class="radio-btn-wrapper">
+                                                <input type="checkbox" name="category" class="checkbox">
+                                                <span class="checkmark"></span>
+                                                <span class="content">
+                                                    <span class="left">Gratuit</span>
+                                                </span>
+                                            </label>
+                                        </li>
+
+                                    </ul>
+                                </div>
+
+                                <div class="single-widget-item">
+                                    <h4 class="title">Langue</h4>
+
+                                    <ul class="category-wrap">
+                                        <li class="single-category-item">
+                                            <label class="radio-btn-wrapper">
+                                                <input type="checkbox" name="category" class="checkbox">
+                                                <span class="checkmark"></span>
+                                                <span class="content">
+                                                    <span class="left">Français</span>
+                                                </span>
+                                            </label>
+                                        </li>
+
+                                        <li class="single-category-item">
+                                            <label class="radio-btn-wrapper">
+                                                <input type="checkbox" name="category" class="checkbox">
+                                                <span class="checkmark"></span>
+                                                <span class="content">
+                                                    <span class="left">Anglais</span>
+                                                </span>
+                                            </label>
+                                        </li>
+
+                                        <li class="single-category-item">
+                                            <label class="radio-btn-wrapper">
+                                                <input type="checkbox" name="category" class="checkbox">
+                                                <span class="checkmark"></span>
+                                                <span class="content">
+                                                    <span class="left">Espagnol</span>
+                                                </span>
+                                            </label>
+                                        </li>
+
+                                    </ul>
+                                </div>
+
+                                <div class="single-widget-item">
+                                    <h4 class="title">Note</h4>
+
+                                    <ul class="category-wrap">
+                                        <li class="single-category-item">
+                                            <label class="radio-btn-wrapper">
+                                                <input type="radio" name="category" class="checkbox">
+                                                <span class="checkmark"></span>
+                                                <span class="content">
+                                                    <span class="left">À partir de 4,5</span>
+                                                </span>
+                                            </label>
+                                        </li>
+
+                                        <li class="single-category-item">
+                                            <label class="radio-btn-wrapper">
+                                                <input type="radio" name="category" class="checkbox">
+                                                <span class="checkmark"></span>
+                                                <span class="content">
+                                                    <span class="left">À partir de 4</span>
+                                                </span>
+                                            </label>
+                                        </li>
+
+                                        <li class="single-category-item">
+                                            <label class="radio-btn-wrapper">
+                                                <input type="radio" name="category" class="checkbox">
+                                                <span class="checkmark"></span>
+                                                <span class="content">
+                                                    <span class="left">À partir de 3,5</span>
+                                                </span>
+                                            </label>
+                                        </li>
+
+                                        <li class="single-category-item">
+                                            <label class="radio-btn-wrapper">
+                                                <input type="radio" name="category" class="checkbox">
+                                                <span class="checkmark"></span>
+                                                <span class="content">
+                                                    <span class="left">À partir de 3</span>
+                                                </span>
+                                            </label>
+                                        </li>
+
+                                    </ul>
+                                </div>
+
+
+
+
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-xl-9">
+                            <div class="row column-gap-50">
+                                {% for training in trainings %}
+                                <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
+                                    <div class="single-course-item">
+                                        <div class="thumbnail zoom-in">
+                                            <div class="background-image">
+                                                <a href="{{ path('training', {'slug' : training.slug}) }}"> <img src="/uploads/{{ training.illustration }}" alt="{{ training.name }}"> </a>
+
+
+                                                 {#style="background-image: url(assets/img/course/01.png);">#}
+
+
+                                            </div>
+                                        </div>
+                                        <div class="contact">
+                                            <p class="tag">{{training.videoname}}</p>
+                                            <h3 class="title">
+                                                <a href="#">{{ training.name}}</a>
+                                            </h3>
+
+                                            <div class="meta-box">
+                                                <div class="left-content">
+                                                    <di class="feedback">
+                                                        <i class="fas fa-star icon"></i>
+                                                        <span class="text">4.8 (756)</span>
+                                                    </di>
+                                                </div>
+                                                <div class="right-content">
+                                                    <p class="price">{{ training.price}} XOF</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="hover-option">
+                                            <div class="contact">
+                                                <p class="tag"></p>
+                                               {#  <p class="tag">Harverd University</p> #}
+                                                <h3 class="title">
+                                                    <a href="{{ path('trainingdetails') }}">{{ training.name }}</a>
+                                                  {#  <a href="{{ path('trainingdetails') }}">Become Ethereum Blockchain Developer</a> #}
+                                                </h3>
+
+                                                <p class="paragraph">  <p class="paragraph"> {{ training.description.descriptionPreview }}</p>
+                                                </p>
+
+                                                <div class="meta-box">
+                                                    <div class="left-content">
+                                                        <di class="feedback">
+                                                            <i class="fa-solid fa-user-group icon"></i>
+                                                            <span class="text">548796</span>
+                                                        </di>
+                                                    </div>
+                                                    <div class="right-content">
+                                                        <i class="fa-solid fa-clock icon"></i>
+                                                        <span class="duration">23 hr 54 min</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="video-play-wrapper">
+                                                    <a class="video-play-btn mfp-iframe"
+                                                       href="https://www.youtube.com/watch?v=c7XEhXZ_rsk">
+                                                        <svg width="14" height="25" viewBox="0 0 14 25" fill="none"
+                                                             xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                    d="M13.124 12.6362L0.364909 24.7606L0.36491 0.511875L13.124 12.6362Z"
+                                                                    fill="white"></path>
+                                                        </svg>
+                                                    </a>
+
+                                                    <p class="text">Watch Intro</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
+                                    <div class="single-course-item">
+                                        <div class="thumbnail zoom-in">
+                                            <div class="background-image"
+                                                 style="background-image: url(assets/img/course/02.png);"></div>
+                                        </div>
+                                        <div class="contact">
+                                            <p class="tag">Esther Howard</p>
+                                            <h3 class="title">
+                                                <a href="#">Leadership Training: Human Leadership</a>
+                                            </h3>
+
+                                            <div class="meta-box">
+                                                <div class="left-content">
+                                                    <di class="feedback">
+                                                        <i class="fas fa-star icon"></i>
+                                                        <span class="text">4.8 (756)</span>
+                                                    </di>
+                                                </div>
+                                                <div class="right-content">
+                                                    <p class="price">$25.50</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="hover-option">
+                                            <div class="contact">
+                                                <p class="tag">Esther Howard</p>
+                                                <h3 class="title">
+                                                    <a href="{{ path('trainingdetails') }}">Leadership Training: Human Leadership</a>
+                                                </h3>
+
+                                                <p class="paragraph">We have professional alliance's with leading
+                                                    Universities
+                                                    Colleges
+                                                    around the world.
+                                                </p>
+
+                                                <div class="meta-box">
+                                                    <div class="left-content">
+                                                        <di class="feedback">
+                                                            <i class="fa-solid fa-user-group icon"></i>
+                                                            <span class="text">548796</span>
+                                                        </di>
+                                                    </div>
+                                                    <div class="right-content">
+                                                        <i class="fa-solid fa-clock icon"></i>
+                                                        <span class="duration">23 hr 54 min</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="video-play-wrapper">
+                                                    <a class="video-play-btn mfp-iframe"
+                                                       href="https://www.youtube.com/watch?v=c7XEhXZ_rsk">
+                                                        <svg width="14" height="25" viewBox="0 0 14 25" fill="none"
+                                                             xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                    d="M13.124 12.6362L0.364909 24.7606L0.36491 0.511875L13.124 12.6362Z"
+                                                                    fill="white"></path>
+                                                        </svg>
+                                                    </a>
+
+                                                    <p class="text">Watch Intro</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
+                                    <div class="single-course-item">
+                                        <div class="thumbnail zoom-in">
+                                            <div class="background-image"
+                                                 style="background-image: url(assets/img/course/03.png);"></div>
+                                        </div>
+                                        <div class="contact">
+                                            <p class="tag">Leslie Alexander</p>
+                                            <h3 class="title">
+                                                <a href="#">Beginner friendly web development course A2Z</a>
+                                            </h3>
+
+                                            <div class="meta-box">
+                                                <div class="left-content">
+                                                    <di class="feedback">
+                                                        <i class="fas fa-star icon"></i>
+                                                        <span class="text">4.8 (756)</span>
+                                                    </di>
+                                                </div>
+                                                <div class="right-content">
+                                                    <p class="price">$25.50</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="hover-option">
+                                            <div class="contact">
+                                                <p class="tag">Leslie Alexander</p>
+                                                <h3 class="title">
+                                                    <a href="{{ path('trainingdetails') }}">Beginner friendly web development course A2Z</a>
+                                                </h3>
+
+                                                <p class="paragraph">We have professional alliance's with leading
+                                                    Universities
+                                                    Colleges
+                                                    around the world.
+                                                </p>
+
+                                                <div class="meta-box">
+                                                    <div class="left-content">
+                                                        <di class="feedback">
+                                                            <i class="fa-solid fa-user-group icon"></i>
+                                                            <span class="text">548796</span>
+                                                        </di>
+                                                    </div>
+                                                    <div class="right-content">
+                                                        <i class="fa-solid fa-clock icon"></i>
+                                                        <span class="duration">23 hr 54 min</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="video-play-wrapper">
+                                                    <a class="video-play-btn mfp-iframe"
+                                                       href="https://www.youtube.com/watch?v=c7XEhXZ_rsk">
+                                                        <svg width="14" height="25" viewBox="0 0 14 25" fill="none"
+                                                             xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                    d="M13.124 12.6362L0.364909 24.7606L0.36491 0.511875L13.124 12.6362Z"
+                                                                    fill="white"></path>
+                                                        </svg>
+                                                    </a>
+
+                                                    <p class="text">Watch Intro</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
+                                    <div class="single-course-item">
+                                        <div class="thumbnail zoom-in">
+                                            <div class="background-image"
+                                                 style="background-image: url(assets/img/course/04.png);"></div>
+                                        </div>
+                                        <div class="contact">
+                                            <p class="tag">Ralph Edwards</p>
+                                            <h3 class="title">
+                                                <a href="#">The Ultimate Drawing Course - Beginner to Advanced</a>
+                                            </h3>
+
+                                            <div class="meta-box">
+                                                <div class="left-content">
+                                                    <di class="feedback">
+                                                        <i class="fas fa-star icon"></i>
+                                                        <span class="text">4.8 (756)</span>
+                                                    </di>
+                                                </div>
+                                                <div class="right-content">
+                                                    <p class="price">$25.50</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="hover-option">
+                                            <div class="contact">
+                                                <p class="tag">Ralph Edwards</p>
+                                                <h3 class="title">
+                                                    <a href="#">The Ultimate Drawing Course - Beginner to Advanced</a>
+                                                </h3>
+
+                                                <p class="paragraph">We have professional alliance's with leading
+                                                    Universities
+                                                    Colleges
+                                                    around the world.
+                                                </p>
+
+                                                <div class="meta-box">
+                                                    <div class="left-content">
+                                                        <di class="feedback">
+                                                            <i class="fa-solid fa-user-group icon"></i>
+                                                            <span class="text">548796</span>
+                                                        </di>
+                                                    </div>
+                                                    <div class="right-content">
+                                                        <i class="fa-solid fa-clock icon"></i>
+                                                        <span class="duration">23 hr 54 min</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="video-play-wrapper">
+                                                    <a class="video-play-btn mfp-iframe"
+                                                       href="https://www.youtube.com/watch?v=c7XEhXZ_rsk">
+                                                        <svg width="14" height="25" viewBox="0 0 14 25" fill="none"
+                                                             xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                    d="M13.124 12.6362L0.364909 24.7606L0.36491 0.511875L13.124 12.6362Z"
+                                                                    fill="white"></path>
+                                                        </svg>
+                                                    </a>
+
+                                                    <p class="text">Watch Intro</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
+                                    <div class="single-course-item">
+                                        <div class="thumbnail zoom-in">
+                                            <div class="background-image"
+                                                 style="background-image: url(assets/img/course/05.png);"></div>
+                                        </div>
+                                        <div class="contact">
+                                            <p class="tag">Harverd University</p>
+                                            <h3 class="title">
+                                                <a href="#">Enhance Employee development in efective way</a>
+                                            </h3>
+
+                                            <div class="meta-box">
+                                                <div class="left-content">
+                                                    <di class="feedback">
+                                                        <i class="fas fa-star icon"></i>
+                                                        <span class="text">4.8 (756)</span>
+                                                    </di>
+                                                </div>
+                                                <div class="right-content">
+                                                    <p class="price">$25.50</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="hover-option">
+                                            <div class="contact">
+                                                <p class="tag">Harverd University</p>
+                                                <h3 class="title">
+                                                    <a href="#">Enhance Employee development in efective way</a>
+                                                </h3>
+
+                                                <p class="paragraph">We have professional alliance's with leading
+                                                    Universities
+                                                    Colleges
+                                                    around the world.
+                                                </p>
+
+                                                <div class="meta-box">
+                                                    <div class="left-content">
+                                                        <di class="feedback">
+                                                            <i class="fa-solid fa-user-group icon"></i>
+                                                            <span class="text">548796</span>
+                                                        </di>
+                                                    </div>
+                                                    <div class="right-content">
+                                                        <i class="fa-solid fa-clock icon"></i>
+                                                        <span class="duration">23 hr 54 min</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="video-play-wrapper">
+                                                    <a class="video-play-btn mfp-iframe"
+                                                       href="https://www.youtube.com/watch?v=c7XEhXZ_rsk">
+                                                        <svg width="14" height="25" viewBox="0 0 14 25" fill="none"
+                                                             xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                    d="M13.124 12.6362L0.364909 24.7606L0.36491 0.511875L13.124 12.6362Z"
+                                                                    fill="white"></path>
+                                                        </svg>
+                                                    </a>
+
+                                                    <p class="text">Watch Intro</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
+                                    <div class="single-course-item">
+                                        <div class="thumbnail zoom-in">
+                                            <div class="background-image"
+                                                 style="background-image: url(assets/img/course/06.png);"></div>
+                                        </div>
+                                        <div class="contact">
+                                            <p class="tag">Esther Howard</p>
+                                            <h3 class="title">
+                                                <a href="#">Self development- Be your own boss</a>
+                                            </h3>
+
+                                            <div class="meta-box">
+                                                <div class="left-content">
+                                                    <di class="feedback">
+                                                        <i class="fas fa-star icon"></i>
+                                                        <span class="text">4.8 (756)</span>
+                                                    </di>
+                                                </div>
+                                                <div class="right-content">
+                                                    <p class="price">$25.50</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="hover-option">
+                                            <div class="contact">
+                                                <p class="tag">Esther Howard</p>
+                                                <h3 class="title">
+                                                    <a href="#">Self development- Be your own boss</a>
+                                                </h3>
+
+                                                <p class="paragraph">We have professional alliance's with leading
+                                                    Universities
+                                                    Colleges
+                                                    around the world.
+                                                </p>
+
+                                                <div class="meta-box">
+                                                    <div class="left-content">
+                                                        <di class="feedback">
+                                                            <i class="fa-solid fa-user-group icon"></i>
+                                                            <span class="text">548796</span>
+                                                        </di>
+                                                    </div>
+                                                    <div class="right-content">
+                                                        <i class="fa-solid fa-clock icon"></i>
+                                                        <span class="duration">23 hr 54 min</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="video-play-wrapper">
+                                                    <a class="video-play-btn mfp-iframe"
+                                                       href="https://www.youtube.com/watch?v=c7XEhXZ_rsk">
+                                                        <svg width="14" height="25" viewBox="0 0 14 25" fill="none"
+                                                             xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                    d="M13.124 12.6362L0.364909 24.7606L0.36491 0.511875L13.124 12.6362Z"
+                                                                    fill="white"></path>
+                                                        </svg>
+                                                    </a>
+
+                                                    <p class="text">Watch Intro</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
+                                    <div class="single-course-item">
+                                        <div class="thumbnail zoom-in">
+                                            <div class="background-image"
+                                                 style="background-image: url(assets/img/course/07.png);"></div>
+                                        </div>
+                                        <div class="contact">
+                                            <p class="tag">Leslie Alexander</p>
+                                            <h3 class="title">
+                                                <a href="#">Business development- make your company growth</a>
+                                            </h3>
+
+                                            <div class="meta-box">
+                                                <div class="left-content">
+                                                    <di class="feedback">
+                                                        <i class="fas fa-star icon"></i>
+                                                        <span class="text">4.8 (756)</span>
+                                                    </di>
+                                                </div>
+                                                <div class="right-content">
+                                                    <p class="price">$25.50</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="hover-option">
+                                            <div class="contact">
+                                                <p class="tag">Leslie Alexander</p>
+                                                <h3 class="title">
+                                                    <a href="#">Business development- make your company best growth</a>
+                                                </h3>
+
+                                                <p class="paragraph">We have professional alliance's with leading
+                                                    Universities
+                                                    Colleges
+                                                    around the world.
+                                                </p>
+
+                                                <div class="meta-box">
+                                                    <div class="left-content">
+                                                        <di class="feedback">
+                                                            <i class="fa-solid fa-user-group icon"></i>
+                                                            <span class="text">548796</span>
+                                                        </di>
+                                                    </div>
+                                                    <div class="right-content">
+                                                        <i class="fa-solid fa-clock icon"></i>
+                                                        <span class="duration">23 hr 54 min</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="video-play-wrapper">
+                                                    <a class="video-play-btn mfp-iframe"
+                                                       href="https://www.youtube.com/watch?v=c7XEhXZ_rsk">
+                                                        <svg width="14" height="25" viewBox="0 0 14 25" fill="none"
+                                                             xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                    d="M13.124 12.6362L0.364909 24.7606L0.36491 0.511875L13.124 12.6362Z"
+                                                                    fill="white"></path>
+                                                        </svg>
+                                                    </a>
+
+                                                    <p class="text">Watch Intro</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
+                                    <div class="single-course-item">
+                                        <div class="thumbnail zoom-in">
+                                            <div class="background-image"
+                                                 style="background-image: url(assets/img/course/02.png);"></div>
+                                        </div>
+                                        <div class="contact">
+                                            <p class="tag">Ralph Edwards</p>
+                                            <h3 class="title">
+                                                <a href="#">The Ultimate Drawing Course - Beginner to Advanced</a>
+                                            </h3>
+
+                                            <div class="meta-box">
+                                                <div class="left-content">
+                                                    <di class="feedback">
+                                                        <i class="fas fa-star icon"></i>
+                                                        <span class="text">4.8 (756)</span>
+                                                    </di>
+                                                </div>
+                                                <div class="right-content">
+                                                    <p class="price">$25.50</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="hover-option">
+                                            <div class="contact">
+                                                <p class="tag">Ralph Edwards</p>
+                                                <h3 class="title">
+                                                    <a href="#">The Ultimate Drawing Course - Beginner to Advanced</a>
+                                                </h3>
+
+                                                <p class="paragraph">We have professional alliance's with leading
+                                                    Universities
+                                                    Colleges
+                                                    around the world.
+                                                </p>
+
+                                                <div class="meta-box">
+                                                    <div class="left-content">
+                                                        <di class="feedback">
+                                                            <i class="fa-solid fa-user-group icon"></i>
+                                                            <span class="text">548796</span>
+                                                        </di>
+                                                    </div>
+                                                    <div class="right-content">
+                                                        <i class="fa-solid fa-clock icon"></i>
+                                                        <span class="duration">23 hr 54 min</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="video-play-wrapper">
+                                                    <a class="video-play-btn mfp-iframe"
+                                                       href="https://www.youtube.com/watch?v=c7XEhXZ_rsk">
+                                                        <svg width="14" height="25" viewBox="0 0 14 25" fill="none"
+                                                             xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                    d="M13.124 12.6362L0.364909 24.7606L0.36491 0.511875L13.124 12.6362Z"
+                                                                    fill="white"></path>
+                                                        </svg>
+                                                    </a>
+
+                                                    <p class="text">Watch Intro</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
+                                    <div class="single-course-item">
+                                        <div class="thumbnail zoom-in">
+                                            <div class="background-image"
+                                                 style="background-image: url(assets/img/course/09.png);"></div>
+                                        </div>
+                                        <div class="contact">
+                                            <p class="tag">Harverd University</p>
+                                            <h3 class="title">
+                                                <a href="#">Become Ethereum Blockchain Developer</a>
+                                            </h3>
+
+                                            <div class="meta-box">
+                                                <div class="left-content">
+                                                    <di class="feedback">
+                                                        <i class="fas fa-star icon"></i>
+                                                        <span class="text">4.8 (756)</span>
+                                                    </di>
+                                                </div>
+                                                <div class="right-content">
+                                                    <p class="price">$25.50</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="hover-option">
+                                            <div class="contact">
+                                                <p class="tag">Harverd University</p>
+                                                <h3 class="title">
+                                                    <a href="#">Become Ethereum Blockchain Developer</a>
+                                                </h3>
+
+                                                <p class="paragraph">We have professional alliance's with leading
+                                                    Universities
+                                                    Colleges
+                                                    around the world.
+                                                </p>
+
+                                                <div class="meta-box">
+                                                    <div class="left-content">
+                                                        <di class="feedback">
+                                                            <i class="fa-solid fa-user-group icon"></i>
+                                                            <span class="text">548796</span>
+                                                        </di>
+                                                    </div>
+                                                    <div class="right-content">
+                                                        <i class="fa-solid fa-clock icon"></i>
+                                                        <span class="duration">23 hr 54 min</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="video-play-wrapper">
+                                                    <a class="video-play-btn mfp-iframe"
+                                                       href="https://www.youtube.com/watch?v=c7XEhXZ_rsk">
+                                                        <svg width="14" height="25" viewBox="0 0 14 25" fill="none"
+                                                             xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                    d="M13.124 12.6362L0.364909 24.7606L0.36491 0.511875L13.124 12.6362Z"
+                                                                    fill="white"></path>
+                                                        </svg>
+                                                    </a>
+
+                                                    <p class="text">Watch Intro</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
+                                    <div class="single-course-item">
+                                        <div class="thumbnail zoom-in">
+                                            <div class="background-image"
+                                                 style="background-image: url(assets/img/course/10.png);"></div>
+                                        </div>
+                                        <div class="contact">
+                                            <p class="tag">Esther Howard</p>
+                                            <h3 class="title">
+                                                <a href="#">Learn Python: The Complete Python Programming</a>
+                                            </h3>
+
+                                            <div class="meta-box">
+                                                <div class="left-content">
+                                                    <di class="feedback">
+                                                        <i class="fas fa-star icon"></i>
+                                                        <span class="text">4.8 (756)</span>
+                                                    </di>
+                                                </div>
+                                                <div class="right-content">
+                                                    <p class="price">$25.50</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="hover-option">
+                                            <div class="contact">
+                                                <p class="tag">Esther Howard</p>
+                                                <h3 class="title">
+                                                    <a href="#">Learn Python: The Complete Python Programming</a>
+                                                </h3>
+
+                                                <p class="paragraph">We have professional alliance's with leading
+                                                    Universities
+                                                    Colleges
+                                                    around the world.
+                                                </p>
+
+                                                <div class="meta-box">
+                                                    <div class="left-content">
+                                                        <di class="feedback">
+                                                            <i class="fa-solid fa-user-group icon"></i>
+                                                            <span class="text">548796</span>
+                                                        </di>
+                                                    </div>
+                                                    <div class="right-content">
+                                                        <i class="fa-solid fa-clock icon"></i>
+                                                        <span class="duration">23 hr 54 min</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="video-play-wrapper">
+                                                    <a class="video-play-btn mfp-iframe"
+                                                       href="https://www.youtube.com/watch?v=c7XEhXZ_rsk">
+                                                        <svg width="14" height="25" viewBox="0 0 14 25" fill="none"
+                                                             xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                    d="M13.124 12.6362L0.364909 24.7606L0.36491 0.511875L13.124 12.6362Z"
+                                                                    fill="white"></path>
+                                                        </svg>
+                                                    </a>
+
+                                                    <p class="text">Watch Intro</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
+                                    <div class="single-course-item">
+                                        <div class="thumbnail zoom-in">
+                                            <div class="background-image"
+                                                 style="background-image: url(assets/img/course/11.png);"></div>
+                                        </div>
+                                        <div class="contact">
+                                            <p class="tag">Leslie Alexander</p>
+                                            <h3 class="title">
+                                                <a href="#">Data Science and Machine Learning Bootcamp</a>
+                                            </h3>
+
+                                            <div class="meta-box">
+                                                <div class="left-content">
+                                                    <di class="feedback">
+                                                        <i class="fas fa-star icon"></i>
+                                                        <span class="text">4.8 (756)</span>
+                                                    </di>
+                                                </div>
+                                                <div class="right-content">
+                                                    <p class="price">$25.50</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="hover-option">
+                                            <div class="contact">
+                                                <p class="tag">Leslie Alexander</p>
+                                                <h3 class="title">
+                                                    <a href="#">Data Science and Machine Learning Bootcamp</a>
+                                                </h3>
+
+                                                <p class="paragraph">We have professional alliance's with leading
+                                                    Universities
+                                                    Colleges
+                                                    around the world.
+                                                </p>
+
+                                                <div class="meta-box">
+                                                    <div class="left-content">
+                                                        <di class="feedback">
+                                                            <i class="fa-solid fa-user-group icon"></i>
+                                                            <span class="text">548796</span>
+                                                        </di>
+                                                    </div>
+                                                    <div class="right-content">
+                                                        <i class="fa-solid fa-clock icon"></i>
+                                                        <span class="duration">23 hr 54 min</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="video-play-wrapper">
+                                                    <a class="video-play-btn mfp-iframe"
+                                                       href="https://www.youtube.com/watch?v=c7XEhXZ_rsk">
+                                                        <svg width="14" height="25" viewBox="0 0 14 25" fill="none"
+                                                             xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                    d="M13.124 12.6362L0.364909 24.7606L0.36491 0.511875L13.124 12.6362Z"
+                                                                    fill="white"></path>
+                                                        </svg>
+                                                    </a>
+
+                                                    <p class="text">Watch Intro</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
+                                    <div class="single-course-item">
+                                        <div class="thumbnail zoom-in">
+                                            <div class="background-image"
+                                                 style="background-image: url(assets/img/course/12.png);"></div>
+                                        </div>
+                                        <div class="contact">
+                                            <p class="tag">Ralph Edwards</p>
+                                            <h3 class="title">
+                                                <a href="#">The Ultimate Drawing Course - Beginner to Advanced</a>
+                                            </h3>
+
+                                            <div class="meta-box">
+                                                <div class="left-content">
+                                                    <di class="feedback">
+                                                        <i class="fas fa-star icon"></i>
+                                                        <span class="text">4.8 (756)</span>
+                                                    </di>
+                                                </div>
+                                                <div class="right-content">
+                                                    <p class="price">$25.50</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="hover-option">
+                                            <div class="contact">
+                                                <p class="tag">Ralph Edwards</p>
+                                                <h3 class="title">
+                                                    <a href="#">The Ultimate Drawing Course - Beginner to Advanced</a>
+                                                </h3>
+
+                                                <p class="paragraph">We have professional alliance's with leading
+                                                    Universities
+                                                    Colleges
+                                                    around the world.
+                                                </p>
+
+                                                <div class="meta-box">
+                                                    <div class="left-content">
+                                                        <di class="feedback">
+                                                            <i class="fa-solid fa-user-group icon"></i>
+                                                            <span class="text">548796</span>
+                                                        </di>
+                                                    </div>
+                                                    <div class="right-content">
+                                                        <i class="fa-solid fa-clock icon"></i>
+                                                        <span class="duration">23 hr 54 min</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="video-play-wrapper">
+                                                    <a class="video-play-btn mfp-iframe"
+                                                       href="https://www.youtube.com/watch?v=c7XEhXZ_rsk">
+                                                        <svg width="14" height="25" viewBox="0 0 14 25" fill="none"
+                                                             xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                    d="M13.124 12.6362L0.364909 24.7606L0.36491 0.511875L13.124 12.6362Z"
+                                                                    fill="white"></path>
+                                                        </svg>
+                                                    </a>
+
+                                                    <p class="text">Watch Intro</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
+                                    <div class="single-course-item">
+                                        <div class="thumbnail zoom-in">
+                                            <div class="background-image"
+                                                 style="background-image: url(assets/img/course/13.png);"></div>
+                                        </div>
+                                        <div class="contact">
+                                            <p class="tag">Harverd University</p>
+                                            <h3 class="title">
+                                                <a href="#">User Experience Design (UXD) Immersive Remote Flex</a>
+                                            </h3>
+
+                                            <div class="meta-box">
+                                                <div class="left-content">
+                                                    <di class="feedback">
+                                                        <i class="fas fa-star icon"></i>
+                                                        <span class="text">4.8 (756)</span>
+                                                    </di>
+                                                </div>
+                                                <div class="right-content">
+                                                    <p class="price">$25.50</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="hover-option">
+                                            <div class="contact">
+                                                <p class="tag">Harverd University</p>
+                                                <h3 class="title">
+                                                    <a href="#">User Experience Design (UXD) Immersive Remote Flex</a>
+                                                </h3>
+
+                                                <p class="paragraph">We have professional alliance's with leading
+                                                    Universities
+                                                    Colleges
+                                                    around the world.
+                                                </p>
+
+                                                <div class="meta-box">
+                                                    <div class="left-content">
+                                                        <di class="feedback">
+                                                            <i class="fa-solid fa-user-group icon"></i>
+                                                            <span class="text">548796</span>
+                                                        </di>
+                                                    </div>
+                                                    <div class="right-content">
+                                                        <i class="fa-solid fa-clock icon"></i>
+                                                        <span class="duration">23 hr 54 min</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="video-play-wrapper">
+                                                    <a class="video-play-btn mfp-iframe"
+                                                       href="https://www.youtube.com/watch?v=c7XEhXZ_rsk">
+                                                        <svg width="14" height="25" viewBox="0 0 14 25" fill="none"
+                                                             xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                    d="M13.124 12.6362L0.364909 24.7606L0.36491 0.511875L13.124 12.6362Z"
+                                                                    fill="white"></path>
+                                                        </svg>
+                                                    </a>
+
+                                                    <p class="text">Watch Intro</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
+                                    <div class="single-course-item">
+                                        <div class="thumbnail zoom-in">
+                                            <div class="background-image"
+                                                 style="background-image: url(assets/img/course/14.png);"></div>
+                                        </div>
+                                        <div class="contact">
+                                            <p class="tag">Esther Howard</p>
+                                            <h3 class="title">
+                                                <a href="#">Leadership Training: Human Leadership</a>
+                                            </h3>
+
+                                            <div class="meta-box">
+                                                <div class="left-content">
+                                                    <di class="feedback">
+                                                        <i class="fas fa-star icon"></i>
+                                                        <span class="text">4.8 (756)</span>
+                                                    </di>
+                                                </div>
+                                                <div class="right-content">
+                                                    <p class="price">$25.50</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="hover-option">
+                                            <div class="contact">
+                                                <p class="tag">Esther Howard</p>
+                                                <h3 class="title">
+                                                    <a href="#">Leadership Training: Human Leadership</a>
+                                                </h3>
+
+                                                <p class="paragraph">We have professional alliance's with leading
+                                                    Universities
+                                                    Colleges
+                                                    around the world.
+                                                </p>
+
+                                                <div class="meta-box">
+                                                    <div class="left-content">
+                                                        <di class="feedback">
+                                                            <i class="fa-solid fa-user-group icon"></i>
+                                                            <span class="text">548796</span>
+                                                        </di>
+                                                    </div>
+                                                    <div class="right-content">
+                                                        <i class="fa-solid fa-clock icon"></i>
+                                                        <span class="duration">23 hr 54 min</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="video-play-wrapper">
+                                                    <a class="video-play-btn mfp-iframe"
+                                                       href="https://www.youtube.com/watch?v=c7XEhXZ_rsk">
+                                                        <svg width="14" height="25" viewBox="0 0 14 25" fill="none"
+                                                             xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                    d="M13.124 12.6362L0.364909 24.7606L0.36491 0.511875L13.124 12.6362Z"
+                                                                    fill="white"></path>
+                                                        </svg>
+                                                    </a>
+
+                                                    <p class="text">Watch Intro</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
+                                    <div class="single-course-item">
+                                        <div class="thumbnail zoom-in">
+                                            <div class="background-image"
+                                                 style="background-image: url(assets/img/course/15.png);"></div>
+                                        </div>
+                                        <div class="contact">
+                                            <p class="tag">Leslie Alexander</p>
+                                            <h3 class="title">
+                                                <a href="#">Data Science and Machine Learning Bootcamp</a>
+                                            </h3>
+
+                                            <div class="meta-box">
+                                                <div class="left-content">
+                                                    <di class="feedback">
+                                                        <i class="fas fa-star icon"></i>
+                                                        <span class="text">4.8 (756)</span>
+                                                    </di>
+                                                </div>
+                                                <div class="right-content">
+                                                    <p class="price">$25.50</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="hover-option">
+                                            <div class="contact">
+                                                <p class="tag">Leslie Alexander</p>
+                                                <h3 class="title">
+                                                    <a href="#">Data Science and Machine Learning Bootcamp</a>
+                                                </h3>
+
+                                                <p class="paragraph">We have professional alliance's with leading
+                                                    Universities
+                                                    Colleges
+                                                    around the world.
+                                                </p>
+
+                                                <div class="meta-box">
+                                                    <div class="left-content">
+                                                        <di class="feedback">
+                                                            <i class="fa-solid fa-user-group icon"></i>
+                                                            <span class="text">548796</span>
+                                                        </di>
+                                                    </div>
+                                                    <div class="right-content">
+                                                        <i class="fa-solid fa-clock icon"></i>
+                                                        <span class="duration">23 hr 54 min</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="video-play-wrapper">
+                                                    <a class="video-play-btn mfp-iframe"
+                                                       href="https://www.youtube.com/watch?v=c7XEhXZ_rsk">
+                                                        <svg width="14" height="25" viewBox="0 0 14 25" fill="none"
+                                                             xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                    d="M13.124 12.6362L0.364909 24.7606L0.36491 0.511875L13.124 12.6362Z"
+                                                                    fill="white"></path>
+                                                        </svg>
+                                                    </a>
+
+                                                    <p class="text">Watch Intro</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="pagination">
+                                        <ul class="pagination-list">
+                                            <li>
+                                                <a href="#" class="page-number able left-arrow">
+                                                    PREV
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="page-number current">01</a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="page-number">02</a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="page-number">03</a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="page-number able right-arrow">
+                                                    NEXT
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- course area end hare  -->
+        </div>
+        <!-- about page end here  -->
+
+
+
+
+
+
+
+{% endblock %}
