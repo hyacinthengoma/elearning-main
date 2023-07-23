@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Appointment;
+use DateTime;
+use DateTimeInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -47,6 +49,20 @@ class AppointmentController extends AbstractController
     //    ]);
 
         return new JsonResponse($hours);
+    }
+
+    /**
+     * @Route("/appointments/hours/{date}/{hour}", name="appointments_hours_by_day_and_hour")
+     */
+    public function findAppointmentsByDayAndHour(DateTimeInterface $start, string $hour): JsonResponse
+    {
+        $appointments = $this->entityManager->getRepository(Appointment::class)->findAppointmentsByDayAndHour($start, $hour);
+
+        if (empty($appointments)) {
+            return new JsonResponse([], 204);
+        }
+
+        return new JsonResponse($appointments);
     }
 }
 

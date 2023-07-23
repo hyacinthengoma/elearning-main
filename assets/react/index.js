@@ -31,6 +31,22 @@ import MultiSelect from "./components/MultiSelect";
 
 //import { colourOptions } from '../data';
 
+/*
+import Vue from 'vue';
+import SimpleMultiExample from '../SimpleMultiExample.vue'
+
+new Vue({
+    el: "#app",
+    components: {SimpleMultiExample}
+})
+
+*/
+
+
+
+
+
+
 const container = document.getElementById("app");
 const root = createRoot(container);
 root.render(

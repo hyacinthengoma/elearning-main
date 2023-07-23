@@ -20,8 +20,15 @@ Encore
      * Each entry will result in one JavaScript file (e.g. app.js)
      * and one CSS file (e.g. app.scss) if your JavaScript imports CSS.
      */
-    //.addEntry('app', './assets/app.js')
-    .addEntry('app_react', './assets/react/index.js')
+    .addEntry('app', './assets/react/index.js')
+  //  .addEntry('app', './assets/app.js')
+   // .addEntry('calendar_vue', './assets/react/SimpleMultiExample.vue')
+   // .addEntry('app', './assets/js/App.js')
+
+//.enableVueLoader()
+.enableTypeScriptLoader()
+
+
 
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
     .enableStimulusBridge('./assets/controllers.json')

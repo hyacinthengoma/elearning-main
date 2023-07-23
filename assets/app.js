@@ -1,3 +1,7 @@
+// assets/app.js
+import { registerVueControllerComponents } from '@symfony/ux-vue';
+
+registerVueControllerComponents(require.context('./react/controllers', true, /\.vue$/));
 /*
  * Welcome to your app's main JavaScript file!
  *

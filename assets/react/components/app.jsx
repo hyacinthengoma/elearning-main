@@ -16,3 +16,16 @@ const App = () => {
 
 
 export default App;
+
+
+/*
+import Vue from 'vue';
+import SimpleMultiExample from '../SimpleMultiExample.vue'
+
+new Vue({
+    el: "#app",
+    components: {SimpleMultiExample}
+})
+
+
+ */

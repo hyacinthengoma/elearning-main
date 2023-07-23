@@ -1,3 +1,12 @@
 body {
 
 }
+.times{
+  display: flex ;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.times>div{
+  margin: 0.2rem;
+
+}

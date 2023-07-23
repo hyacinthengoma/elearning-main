@@ -1,8 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import Select from 'react-select';
 
+import Calendar from 'react-calendar';
+import './App.css';
+import 'react-calendar/dist/Calendar.css'
+import Time from './Time.js'
+
 const MultiSelect = () => {
     const [hours, setHours] = useState([]);
+
+    const [date, setDate] = useState(new Date())
+    const [showTime, setShowTime] = useState(false)
+
+
 
     useEffect(() => {
         // Récupérer les données des heures depuis le backend et les mettre à jour dans le state
@@ -13,12 +23,14 @@ const MultiSelect = () => {
                 const data = await response.json();
                 // Mettre à jour le state avec les données des heures
                 setHours(data);
+               // console.log(data);
             } catch (error) {
                 console.error('Erreur lors de la récupération des heures', error);
             }
         };
 
         fetchHours();
+       // console.log(fetchHours());
     }, []);
 
     const options = hours.map((hour, index) => ({
@@ -36,7 +48,7 @@ const MultiSelect = () => {
         const form = e.target;
         const formData = new FormData(form);
         // You can pass formData as a fetch body directly:
-        fetch('/some-api', { method: form.method, body: formData });
+        fetch('/cart', { method: form.method, body: formData });
         // You can generate a URL out of it, as the browser does by default:
         console.log(new URLSearchParams(formData).toString());
         // You can work with it as a plain object.
@@ -53,35 +65,36 @@ const MultiSelect = () => {
 
     return (
         <>
-        <form method="post" onSubmit={handleSubmit}>
-        <div className="select-wrapper">
-            <label>
-                <b>Veuillez sélectionner votre/vos créneau(x) dans la liste déroulante ci-dessous</b>
-            </label>
-            <Select options={options}
-                    isMulti
-                    name="hours"
-                    className="basic-multi-select"
-                    classNamePrefix="select"
-                    closeMenuOnSelect={false}
-                    placeholder='Selectionner'
-                //    multiple={true}
+            <div className='app'>
+                <h1 style={{fontSize:"large"}} className='header'><u><i>Ajouter des créneaux à votre panier</i></u></h1>
+                <div>
+                    <p>
+                        {/* affiche la date courante*/}
+                       {date.toDateString()}
+                    </p>
+                    <Calendar onChange={setDate} value={date} onClickDay={() => setShowTime(true)}/>
+                </div>
 
-                  //  onChange={e => {
+                {date.length > 0 ? (
+                    <p>
+                        <span>Start:</span>
+                        {date[0].toDateString()}
+                        &nbsp;
+                        &nbsp;
+                        <span>End:</span>{date[1].toDateString()}
+                    </p>
+                ) : (
+                    <p>
+                        <span>Date par défaut   :</span>{date.toDateString()}
+                    </p>
+                )
+                }
+                <Time showTime={showTime} date={date}/>
 
-                //      const options = option.map(options,index =>
-                //          value.index);
-                //      label(hours);
-                //    }}
+            </div>
 
 
 
-
-            />
-        </div>
-            {/*    <button type="reset"> - Supprimer ma selection</button> */}
-            <button type="submit" className={"mt-3"}> + Ajouter ma selection au panier</button>
-        </form>
 
 
 

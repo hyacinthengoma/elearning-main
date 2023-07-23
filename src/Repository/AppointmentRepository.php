@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Appointment;
+use DateTime;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -63,4 +64,20 @@ class AppointmentRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+
+
+    public function findAppointmentsByDayAndHour(DateTime $date, string $hour): array
+    {
+        $queryBuilder = $this->createQueryBuilder('appointment');
+
+        $queryBuilder->where('appointment.date = :date');
+        $queryBuilder->andWhere('appointment.time = :hour');
+
+        $queryBuilder->setParameter('date', $date);
+        $queryBuilder->setParameter('hour', $hour);
+
+        return $queryBuilder->getQuery()->getResult();
+    }
+
+
 }
