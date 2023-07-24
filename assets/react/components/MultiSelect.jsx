@@ -20,7 +20,9 @@ const MultiSelect = () => {
             try {
                 // Effectuer une requête HTTP vers le backend pour obtenir les données des heures
                 const response = await fetch('/appointments/hours');
+                console.log(response);
                 const data = await response.json();
+
                 // Mettre à jour le state avec les données des heures
                 setHours(data);
                // console.log(data);

@@ -1,3 +1,11 @@
+appointments_hours:
+    path: /appointments/hours
+    controller: App\Controller\AppointmentController::getAppointmentHours
+
+appointments_hours_by_day_and_hour:
+    path: /appointments/hours/{date}/{hour}
+    controller: App\Controller\AppointmentController::getAppointmentsByDayAndHour
+
 controllers:
     resource: ../src/Controller/
     type: attribute

@@ -1,18 +1,10 @@
 <?php
-
-
 namespace App\Entity;
-
-
 use DateTime;
-use DateTimeInterface;
-use Doctrine\DBAL\Types\Types;
-use Doctrine\ORM\Mapping as ORM;
-class MyDateTimeFilter implements DateTimeInterface
-{
-    private $date;
-    private $time;
 
+
+class MyDateTimeFilter extends DateTime
+{
     public function __construct(DateTime $date, DateTime $time)
     {
         $this->date = $date;
@@ -34,3 +26,5 @@ class MyDateTimeFilter implements DateTimeInterface
         return $this->date->format($format) . ' ' . $this->time->format($format);
     }
 }
+
+

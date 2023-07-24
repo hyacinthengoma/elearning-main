@@ -43,10 +43,10 @@ class AppointmentController extends AbstractController
             }
         }
 
-           // dd($hours);
-    //    return $this->render('teacher/show.html.twig', [
-    //        'hours' => $hours,
-    //    ]);
+        // dd($hours);
+        //    return $this->render('teacher/show.html.twig', [
+        //        'hours' => $hours,
+        //    ]);
 
         return new JsonResponse($hours);
     }
@@ -65,4 +65,3 @@ class AppointmentController extends AbstractController
         return new JsonResponse($appointments);
     }
 }
-
