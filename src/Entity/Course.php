@@ -53,6 +53,9 @@ class Course
      #[ORM\ManyToMany(targetEntity: Level::class, inversedBy: 'courses')]
      private Collection $level_name;
 
+     #[ORM\OneToOne(mappedBy: 'course_id', cascade: ['persist', 'remove'])]
+     private ?Appointment $appointment = null;
+
 
    // #[ORM\OneToOne(inversedBy: 'course', cascade: ['persist', 'remove'])]
    // private ?CourseMetas $description_preview = null;
@@ -266,6 +269,28 @@ class Course
     public function removeLevelName(Level $levelName): self
     {
         $this->level_name->removeElement($levelName);
+
+        return $this;
+    }
+
+    public function getAppointment(): ?Appointment
+    {
+        return $this->appointment;
+    }
+
+    public function setAppointment(?Appointment $appointment): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($appointment === null && $this->appointment !== null) {
+            $this->appointment->setCourseId(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($appointment !== null && $appointment->getCourseId() !== $this) {
+            $appointment->setCourseId($this);
+        }
+
+        $this->appointment = $appointment;
 
         return $this;
     }

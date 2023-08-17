@@ -18,6 +18,7 @@ class RegisterController extends AbstractController
     public function __construct(EntityManagerInterface $entityManager) {
         $this->entityManager = $entityManager;
     }
+
     #[Route('/inscription', name: 'register')]
     public function index(Request $request, UserPasswordHasherInterface $hasher): Response
     {
@@ -47,8 +48,8 @@ class RegisterController extends AbstractController
                 //ne pas remettre la ligne uste en dessous
                $password = $hasher->hashPassword($user, $user_data['password']);
                 $user->setPassword($password);
-                $user->setFirstname($user_data['firstname']);
-                $user->setLastname($user_data['lastname']);
+              //  $user->setFirstname($user_data['firstname']);
+              //  $user->setLastname($user_data['lastname']);
                 $this->entityManager->persist($user);
                 $this->entityManager->flush();
                 $notification ="Inscription réussie. Vous pouvez vous connecter à votre espace";

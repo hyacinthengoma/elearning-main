@@ -1,11 +1,24 @@
 {% extends 'base.html.twig' %}
 {% block title  %}{{teacher.name}} {% endblock %}
+
+{% block stylesheets %}
+<style>
+    #calendar{
+
+        margin:auto;
+    }
+
+
+</style>
+{% endblock %}
+
 {% block content %}
 
 
 
 
     <body>
+
     <!-- preloader area start -->
     <div class="preloader" id="preloader">
         <div class="preloader-inner">
@@ -45,10 +58,26 @@
                     <div class="row align-items-center row-reverse">
                         <div class="col-lg-6 col-md-12 info-prof">
                             <div class="about-content">
-                                <h3 class="content-title">Information sur le professeur</h3>
+                                <h3 class="content-title" style="margin-top:15rem">Information sur le professeur</h3>
 
-                                <p class="paragraph">{{ teachers.description.descriptionComplete }}
+                             {#    <p class="paragraph">{{ teachers.description.descriptionComplete }}
                                 </p>
+                             #}
+
+
+
+
+
+                                {# {{ dump(data) }} #}
+                                <div id="calendar"></div>
+
+                                <div id="eventDetails"></div>
+
+
+
+
+
+
 
                                 <div class="check-point-wrap">
                                     <p class="details-title">Clients and publications include:</p>
@@ -86,13 +115,26 @@
                                             </span>
                                         </li>
                                     </ul>
+
+
+                                 {#    <div id="calendar"></div>
+
+                                    <div id="eventDetails"></div>
+                                 #}
+
                                 </div>
                             </div>
                         </div>
+
+
+
+
+
+
                         <div class="offset-xl-1 col-lg-6 col-md-7 col-xl-4">
                             <div class="single-instructor-details-wrap">
                                 <div class="thumb">
-                                 <img src="/uploads/{{ teachers.illustration }}" alt="{{ teachers.name }}" />
+                             {#     <img src="/uploads/{{ teachers.illustration }}" alt="{{ teachers.name }}" /> #}
                                 </div>
 
 
@@ -104,12 +146,24 @@
                                         <span class="badges">Instructeur</span>
                                     </div> #}
 
-                                    <h4 class="title"style="margin-top: -38px;">{{ teachers.name }}</h4>
+                                  {#   <h4 class="title"style="margin-top: -38px;">{{ teachers.name }}</h4> #}
                                     {# <p class="paragraph">{{ teachers.description.descriptionPreview }}</p> #}
 
 
+                                  {#
 
-                                    <div id="app"></div>
+
+                                  <div id="calendar"></div>
+
+                                    <div id="eventDetails"></div>
+                                  Ò#}
+
+
+
+                                   {#  <div id="app"></div> #}
+
+
+
                                     {# templates/home.html.twig #}
 
 
@@ -723,4 +777,105 @@
 
 
 
+    <script src='fullcalendar/dist/index.global.js'></script>
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js" integrity="sha256-8EcfIJRWyvnu/U0OsfCk05x1JGVmeC2a7sJQHrbWYSA=" crossorigin="anonymous"></script>
+    {% block javascript %}
+
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function() {
+        (async () => {
+
+            const response = await fetch('/appointments/hours/' + {{ teacher_id }});
+        const responseJSON = await response.json();
+        const horaire = responseJSON;
+
+        const planning = horaire.map(current_obj => ({
+            title: current_obj.title,
+            start: current_obj.start,
+            end: current_obj.end,
+        }));
+
+        const basket = [];
+        var calendarEl = document.getElementById('calendar');
+
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            timeZone: 'local',
+            eventClick: (event) => {
+                // Add the event to the basket
+                basket.push(event);
+
+                // Make an AJAX request to add the event to the basket
+                const url = "/panier";
+                const data = {
+                    events: basket,
+                };
+                fetch(url, {
+                    method: "POST",
+                    body: JSON.stringify(data),
+                })
+                .then((response) => {
+                    if (response.ok) {
+                        // The event was added to the basket successfully
+                        console.log(basket);
+                    } else {
+                        // There was an error adding the event to the basket
+                    }
+                })
+                .catch((error) => {
+                    // There was an error communicating with the server
+                });
+            },
+
+            themeSystem: 'literia',
+            slotDuration: '01:00',
+            initialView: 'dayGridMonth',
+            locale: 'fr',
+
+            headerToolbar: {
+                start: 'prev,next today',
+                center: 'title',
+                end: 'dayGridMonth,timeGridWeek,listWeek',
+            },
+
+            editable: true,
+            selectable: true,
+            navLinks: true,
+            dateClick: function(info) {
+                alert('Date: ' + info.dateStr);
+                alert('Resource ID: ' + info.title);
+            },
+            events: planning,
+
+            eventContent: function(arg) {
+                // Récupérer l'ID du professeur pour l'événement actuel
+                var id = arg.event.extendedProps.id;
+                // Assurez-vous que cette propriété existe dans vos données
+
+                // Comparer l'ID du professeur avec l'ID du professeur actuel
+                if (id === id) { // Remplacez 123 par l'ID du professeur actuel
+                    return {
+                        html: arg.event.title // Afficher le titre de l'événement
+                    };
+                } else {
+                    return false; // Ne pas afficher l'événement
+                }
+            },
+
+            // ... autres options du calendrier ...
+        });
+
+        calendar.render();
+
+    })()
+});
+
+</script>
+
+
+
+
+  {% endblock %}
 {% endblock %}
+

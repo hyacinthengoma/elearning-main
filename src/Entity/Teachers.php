@@ -7,9 +7,13 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: TeachersRepository::class)]
-class Teachers
+#[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
+class Teachers implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -32,7 +36,7 @@ class Teachers
     private Collection $trainings;
 
     #[ORM\OneToOne(inversedBy: 'teachers', cascade: ['persist', 'remove'])]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?TeacherMetas $description = null;
 
     #[ORM\Column(length: 255, nullable: true)]
@@ -44,6 +48,17 @@ class Teachers
     #[ORM\OneToMany(mappedBy: 'teacher', targetEntity: Course::class)]
     private Collection $courses;
 
+    #[ORM\OneToMany(mappedBy: 'teachers', targetEntity: Appointment::class)]
+    private Collection $slug_id;
+
+
+
+    #[ORM\Column(type: 'boolean')]
+    private $isVerified = false;
+
+    #[ORM\Column(nullable: true)]
+    private array $roles = [];
+
    // #[ORM\Column(length: 255)]
    // private ?string $name = null;
 
@@ -51,6 +66,7 @@ class Teachers
     {
         $this->trainings = new ArrayCollection();
         $this->courses = new ArrayCollection();
+        $this->slug_id = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -94,6 +110,9 @@ class Teachers
         return $this;
     }
 
+    /**
+     * @see PasswordAuthenticatedUserInterface
+     */
     public function getPassword(): ?string
     {
         return $this->password;
@@ -229,8 +248,89 @@ class Teachers
       return $this;
   }
 
+  /**
+   * @return Collection<int, Appointment>
+   */
+  public function getSlugId(): Collection
+  {
+      return $this->slug_id;
+  }
+
+  public function addSlugId(Appointment $slugId): self
+  {
+      if (!$this->slug_id->contains($slugId)) {
+          $this->slug_id->add($slugId);
+          $slugId->setTeachers($this);
+      }
+
+      return $this;
+  }
+
+  public function removeSlugId(Appointment $slugId): self
+  {
+      if ($this->slug_id->removeElement($slugId)) {
+          // set the owning side to null (unless already changed)
+          if ($slugId->getTeachers() === $this) {
+              $slugId->setTeachers(null);
+          }
+      }
+
+      return $this;
+  }
 
 
+
+
+    /**
+     * A visual identifier that represents this user.
+     *
+     * @see UserInterface
+     */
+    public function getUserIdentifier(): string
+    {
+        return (string) $this->email;
+    }
+
+
+    /**
+     * @see UserInterface
+     */
+    public function getRoles(): array
+    {
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_MENTOR';
+
+        return array_unique($roles);
+    }
+
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function eraseCredentials()
+    {
+        // If you store any temporary, sensitive data on the user, clear it here
+        // $this->plainPassword = null;
+    }
+
+    public function isVerified(): bool
+    {
+        return $this->isVerified;
+    }
+
+    public function setIsVerified(bool $isVerified): self
+    {
+        $this->isVerified = $isVerified;
+
+        return $this;
+    }
 
 
 
