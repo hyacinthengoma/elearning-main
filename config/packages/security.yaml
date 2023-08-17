@@ -11,18 +11,22 @@ security:
         # used to reload user from session & other features (e.g. switch_user)
         app_user_provider:
             entity:
-                class: App\Entity\Admin
+                class: App\Entity\Teachers
                 property: email
 
         teachers_user_provider:
             entity:
-                class: App\Entity\Teachers
+                class: App\Entity\Admin
                 property: email
 
         app_learners_provider:
             entity:
                 class: App\Entity\Learners
                 property: email
+
+        chain_provider:
+            chain:
+                providers: [app_user_provider, teachers_user_provider,app_learners_provider]
         # used to reload user from session & other features (e.g. switch_user)
         # used to reload user from session & other features (e.g. switch_user)
     firewalls:
@@ -31,7 +35,9 @@ security:
             security: false
         main:
             lazy: true
-            provider: app_user_provider
+            form_login: ~
+            provider: chain_provider
+            entry_point: App\Security\LoginFormAuthAuthenticator
 
 
             #            form_login:
@@ -54,12 +60,15 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
+         - { path: ^/admin, roles: ROLE_ADMIN }
        # - { path: ^/admin, roles: ROLE_ADMIN }
-        - { path: ^/compte, roles: ROLE_USER }
-        - { path: ^/commande, roles: ROLE_USER }
+         - { path: ^/compte, roles: ROLE_USER }
+         - { path: ^/commande, roles: ROLE_USER }
     role_hierarchy:
+        #ROLE_ADMIN: ROLE_BUSINESS
+        #ROLE_MENTOR: ROLE_USER
         ROLE_ADMIN: ROLE_BUSINESS
+        ROLE_BUSINESS: ROLE_MENTOR
         ROLE_MENTOR: ROLE_USER
 
 

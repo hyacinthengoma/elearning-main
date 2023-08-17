@@ -43,6 +43,7 @@ class TeacherController extends AbstractController
     #[Route('/teacher/{slug}', name: 'teacher_info')]
     public function show($slug, AppointmentRepository $appointment,Teachers $teacherResa): Response
     {
+        $teachers = $this->entityManager->getRepository(Teachers::class)->findOneBySlug($slug);
         $events = $this->entityManager->getRepository(Appointment::class)->findOneBy(['teachers' => $teacherResa]);
 		//dd($events);
         if ($events !== null) {
@@ -51,7 +52,7 @@ class TeacherController extends AbstractController
 
             $teacher = $this->entityManager->getRepository(Teachers::class)->findOneById($teacherResa);
             return $this->render('teacher/show.html.twig', [
-                'teacher' => $teacher
+                'teachers' => $teachers
             ]);
         }
         // dd($teacher);
@@ -62,7 +63,8 @@ class TeacherController extends AbstractController
         //  dd($appointmentsbyteachersrefs);
 
         return $this->render('teacher/show.html.twig',[
-            'teacher_id'=>$appointmentsbyteachersrefs
+            'teacher_id'=>$appointmentsbyteachersrefs,
+            'teachers' => $teachers
         ]);
     }
 

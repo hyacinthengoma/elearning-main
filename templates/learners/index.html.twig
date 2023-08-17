@@ -59,6 +59,7 @@
 
                         {{ notification }}
                         <div class="row col-md-12">
+                        {{ form_row(form._token) }}
                             <div class="col-md-12">{{ form_row(form.firstname) }}</div>
                             <div class="col-md-12">{{ form_row(form.lastname) }}</div>
                             <div class="col-md-12">{{ form_row(form.email) }}</div>
@@ -66,7 +67,6 @@
 
                             {{ form_row(form.submit) }}
                         </div>
-                        {{ form_row(form._token) }}
                         {{ form_rest(form) }}
                         {{ form_end(form) }}
                     </div>
