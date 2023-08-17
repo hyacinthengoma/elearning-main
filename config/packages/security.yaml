@@ -18,6 +18,11 @@ security:
             entity:
                 class: App\Entity\Teachers
                 property: email
+
+        app_learners_provider:
+            entity:
+                class: App\Entity\Learners
+                property: email
         # used to reload user from session & other features (e.g. switch_user)
         # used to reload user from session & other features (e.g. switch_user)
     firewalls:

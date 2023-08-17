@@ -111,7 +111,7 @@ class RegistrationController extends AbstractController
 
 
     #[Route('/inscription-apprenants', name: 'register_learners')]
-    public function registerlearners(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, LoginFormAuthAuthenticator $authenticator, EntityManagerInterface $entityManager): Response
+    public function registerlearners(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, LoginFormAuthAuthenticator $authenticator, EntityManagerInterface $entityManager,EmailVerifier $emailVerifier): Response
     {
         $notification = null;
         $user = new Learners();
