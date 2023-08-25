@@ -3,7 +3,54 @@
 
 
 
-<body>
+<div>
+
+
+
+
+
+
+
+
+
+
+
+{#
+<script>
+    // Récupérez les données du localStorage
+    const localStorageData = localStorage.getItem('basket');
+
+    // Vérifiez si des données sont présentes dans le localStorage
+    if (localStorageData) {
+        // Convertissez les données JSON en objet JavaScript
+        const data = JSON.parse(localStorageData);
+
+        // Accédez aux éléments de l'objet et affichez-les dans la liste
+        const localStorageList = document.getElementById('localStorageData');
+        for (const key in data) {
+            if (data.hasOwnProperty(key)) {
+                const listItem = document.createElement('li');
+                listItem.textContent = `${key}: ${data[key]}`;
+                localStorageList.appendChild(listItem);
+            }
+        }
+    } else {
+        // Si aucune donnée n'est présente dans le localStorage
+        const noDataMessage = document.createElement('p');
+        noDataMessage.textContent = 'Aucune donnée dans le localStorage.';
+        document.body.appendChild(noDataMessage);
+    }
+</script>
+#}
+
+<ul id="localStorageData"></ul>
+
+
+
+
+
+
+
 <!-- preloader area start -->
 <div class="preloader" id="preloader">
     <div class="preloader-inner">
@@ -25,7 +72,7 @@
 </div>
 <!-- Search Popup End -->
 
-<main class="page-wrapper">
+<div class="page-wrapper">
     <!-- nav area start here -->
     <div class="nav-area-wrapper-relative">
 
@@ -38,161 +85,64 @@
         <div class="breadcrumb-wrap style-01">
             <div class="container custom-container-01">
                 <div class="row">
-                    <div class="col-lg-12">
-                        <div class="breadcrumb-content">
-                            <h3 class="title">Panier</h3>
-                            <p class="details">4 articles dans le panier
-                            </p>
-                        </div>
-                    </div>
+
+                            <div class="breadcrumb-content">
+                                <h3 class="title">Panier</h3>
+                                <p class="details">4 articles dans le panier</p>
+
+                                <div id="panier">
+                                    <ul id="liste-panier">
+                                        <!-- Les événements du panier seront affichés ici sous forme de liste -->
+                                        {#
+                                        <li data-event-id="f32b037e-5af2-4ff8-a7c5-062fb7b512c4"
+                                            data-event-title="Créneau disponible"
+                                            data-event-start="Fri Aug 18 2023 10:00:00 GMT+0200 (heure d’été d’Europe centrale)"
+                                            data-event-end="Fri Aug 18 2023 11:00:00 GMT+0200 (heure d’été d’Europe centrale)">
+                                            Titre: Créneau disponible<br>Début: Fri Aug 18 2023 10:00:00 GMT+0200 (heure
+                                            d’été d’Europe centrale)<br>Fin: Fri Aug 18 2023 11:00:00 GMT+0200 (heure d’été
+                                            d’Europe centrale)<br><br></li>
+                                        <li data-event-id="4b14ef2e-6fa8-4caf-8557-f94ad14362ef"
+                                            data-event-title="Créneau disponible"
+                                            data-event-start="Sat Aug 19 2023 10:00:00 GMT+0200 (heure d’été d’Europe centrale)"
+                                            data-event-end="Sat Aug 19 2023 11:00:00 GMT+0200 (heure d’été d’Europe centrale)">
+                                            Titre: Créneau disponible<br>Début: Sat Aug 19 2023 10:00:00 GMT+0200 (heure
+                                            d’été d’Europe centrale)<br>Fin: Sat Aug 19 2023 11:00:00 GMT+0200 (heure d’été
+                                            d’Europe centrale)<br><br></li>
+                                        #}
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div class="checkout-wrap">
+                                    <span class="total">Total</span>
+                                    <span class="price">XOF 169.98</span>
+                                    <span class="text">Avez-vous un code de réduction ?</span>
+                                    <div class="copun-box">
+                                        <input type="text" placeholder="Entrer le code du coupon">
+                                        <button type="submit">Valider</button>
+                                    </div>
+                                    <div class="form-submit">
+                                        <button type="submit" class="btn-common btn-active">Payer maintenant
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                                         {#    <div id="localStorageContent"></div>
+
+                                                    <!-- Les données seront affichées ici -->
+                                                </div>
+                                             #}
+
                 </div>
-            </div>
+             </div>
         </div>
+
         <!-- breadcrumb area end here  -->
 
-        <div class="container custom-container-01">
-            <div class="row">
-                <div class="col-lg-8">
-                    <div class="similler-course-list-wrap mt-0">
-                        <ul class="ul simillar-course-list style-02 mt-0">
-                            <li class="single-simillar-course-item">
-                                <div class="thumb">
-                                    <img src="assets/img/related-course/01.jpg" alt="">
-                                </div>
-                                <div class="content">
-                                    <div class="left-content">
-                                        <h4 class="title">
-                                            <a href="#">Self development- Be your own boss</a>
-                                        </h4>
 
-                                        <div class="rating-and-enrolled">
-                                            <div class="rating-wrap">
-                                                    <span class="star">
-                                                        <i class="fa-solid fa-star icon"></i>
-                                                    </span>
-                                                <span class="nubm">4.8 (756)</span>
-                                            </div>
-                                            <div class="enrolled-wrap">
-                                                <i class="fa-solid fa-user-group icon"></i>
-                                                <span class="text">97538 Enrolled</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="right-content">
-                                        <span class="remove">Remove</span>
-                                        <span class="price">XOF 84.50</span>
-                                    </div>
-                                </div>
-                            </li>
 
-                            <li class="single-simillar-course-item">
-                                <div class="thumb">
-                                    <img src="assets/img/related-course/02.jpg" alt="">
-                                </div>
-                                <div class="content">
-                                    <div class="left-content">
-                                        <h4 class="title">
-                                            <a href="#">Data Science and Machine Learning Bootcamp</a>
-                                        </h4>
 
-                                        <div class="rating-and-enrolled">
-                                            <div class="rating-wrap">
-                                                    <span class="star">
-                                                        <i class="fa-solid fa-star icon"></i>
-                                                    </span>
-                                                <span class="nubm">4.8 (756)</span>
-                                            </div>
-                                            <div class="enrolled-wrap">
-                                                <i class="fa-solid fa-user-group icon"></i>
-                                                <span class="text">97538 Enrolled</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="right-content">
-                                        <span class="remove">Remove</span>
-                                        <span class="price">XOF 75.50</span>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li class="single-simillar-course-item">
-                                <div class="thumb">
-                                    <img src="assets/img/related-course/03.jpg" alt="">
-                                </div>
-                                <div class="content">
-                                    <div class="left-content">
-                                        <h4 class="title">
-                                            <a href="#">Learn Python: The Complete Python Programming</a>
-                                        </h4>
-
-                                        <div class="rating-and-enrolled">
-                                            <div class="rating-wrap">
-                                                    <span class="star">
-                                                        <i class="fa-solid fa-star icon"></i>
-                                                    </span>
-                                                <span class="nubm">4.8 (756)</span>
-                                            </div>
-                                            <div class="enrolled-wrap">
-                                                <i class="fa-solid fa-user-group icon"></i>
-                                                <span class="text">97538 Enrolled</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="right-content">
-                                        <span class="remove">Remove</span>
-                                        <span class="price">XOF 45.50</span>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li class="single-simillar-course-item">
-                                <div class="thumb">
-                                    <img src="assets/img/related-course/04.jpg" alt="">
-                                </div>
-                                <div class="content">
-                                    <div class="left-content">
-                                        <h4 class="title">
-                                            <a href="#">The Ultimate Drawing Course - Beginner to Advanced</a>
-                                        </h4>
-
-                                        <div class="rating-and-enrolled">
-                                            <div class="rating-wrap">
-                                                    <span class="star">
-                                                        <i class="fa-solid fa-star icon"></i>
-                                                    </span>
-                                                <span class="nubm">4.8 (756)</span>
-                                            </div>
-                                            <div class="enrolled-wrap">
-                                                <i class="fa-solid fa-user-group icon"></i>
-                                                <span class="text">97538 Enrolled</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="right-content">
-                                        <span class="remove">Remove</span>
-                                        <span class="price">XOF 25.50</span>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="checkout-wrap">
-                        <span class="total">Total</span>
-                        <span class="price">XOF 169.98</span>
-                        <span class="text">Avez-vous un code de réduction ?</span>
-                        <div class="copun-box">
-                            <input type="text" placeholder="Entrer le code du coupon">
-                            <button type="submit">Valider</button>
-                        </div>
-                        <div class="form-submit">
-                            <button type="submit" class="btn-common btn-active">Payer maintenant
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
             <div class="row mt-5">
                 <div class="col-lg-12">
@@ -624,6 +574,7 @@
             </div>
         </div>
     </div>
+
     <!-- about page end here  -->
 
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -631,7 +582,210 @@
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
 </main>
-</body>
+
+{#
+<script>
+
+    const data = {
+        title: event.event.title,
+        start: event.event.start,
+        end: event.event.end
+    };
+    localStorage.setItem("basket", JSON.stringify(data));
+
+    const storedDataJSON = localStorage.getItem("basket");
+    const storedData = JSON.parse(storedDataJSON);
+
+    // Créer un élément HTML pour afficher les données
+    const eventContainer = document.createElement("div");
+    eventContainer.innerHTML = `
+    <h1>${storedData.title}</h1>
+    <p>Date de début : ${storedData.start}</p>
+    <p>Date de fin : ${storedData.end}</p>
+`;
+
+    // Ajouter l'élément au document HTML (par exemple, à un div avec l'id "content")
+    document.getElementById("content").appendChild(eventContainer);
+</script>
+#}
+{#
+<script>
+    // Récupérez le panier depuis le Local Storage
+    var storedBasket = localStorage.getItem('basket');
+
+    // Si le panier existe dans le Local Storage, convertissez-le en tableau JavaScript
+    if (storedBasket) {
+    var basket = JSON.parse(storedBasket);
+    // Maintenant, "basket" contient les données que vous avez enregistrées précédemment.
+    } else {
+    // Le panier n'existe pas encore dans le Local Storage.
+    }
+
+</script>
+#}
+
+
+{# Le code ci dessous fonctionne
+
+
+<script>
+    // Récupérer les données du local storage
+    const basketData = JSON.parse(localStorage.getItem('basket'));
+    const panierDiv = document.getElementById('panier');
+
+    // Vérifier si le panier n'est pas vide
+    if (basketData && basketData.length > 0) {
+        // Parcourir les données et afficher chaque événement
+        for (let i = 0; i < basketData.length; i += 3) {
+            const title = basketData[i];
+            const start = new Date(basketData[i + 1]);
+            const end = new Date(basketData[i + 2]);
+
+            // Créer des éléments HTML pour afficher les informations
+            const eventDiv = document.createElement('div');
+            eventDiv.innerHTML = `
+        <div class="container custom-container-01">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="similler-course-list-wrap mt-0">
+                        <ul class="ul simillar-course-list style-02 mt-0">
+                            <li class="single-simillar-course-item">
+                                <div class="thumb">
+                                    <img src="assets/img/related-course/04.jpg" alt="">
+                                </div>
+                                <div class="content">
+                                    <div class="left-content">
+                                        <h4 class="title">
+                                            <a href="#">Titre: ${title}</a>
+                                            <p href="#">Début: ${start.toString()}</p>
+                                            <p href="#">Fin: ${end.toString()}</p>
+                                        </h4>
+
+                                        <div class="rating-and-enrolled">
+                                            <div class="rating-wrap">
+                                                    <span class="star">
+                                                        <i class="fa-solid fa-star icon"></i>
+                                                    </span>
+                                                <span class="nubm">4.8 (756)</span>
+                                            </div>
+                                            <div class="enrolled-wrap">
+                                                <i class="fa-solid fa-user-group icon"></i>
+                                                <span class="text">97538 Enrolled</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="right-content">
+                                        <span class="remove">Remove</span>
+                                        <span class="price">XOF 25.50</span>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div> `;
+
+
+
+
+                     <h2>Titre: ${title}</h2>
+                    <p>Début: ${start.toString()}</p>
+                    <p>Fin: ${end.toString()}</p>
+
+
+            // Ajouter l'élément au div du panier
+            panierDiv.appendChild(eventDiv);
+
+    } else {
+        panierDiv.innerHTML = 'Le panier est vide.';
+    }
+
+
+</script>
+#}
+
+
+    <script>
+        // Récupérer les données du local storage
+        const basketData = JSON.parse(localStorage.getItem('basket'));
+        const panierDiv = document.getElementById('panier');
+
+        // Fonction pour formater une date en français (jour, mois, année, heure sans secondes)
+        function formatDateWithoutSeconds(dateString) {
+            const date = new Date(dateString);
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' };
+            return date.toLocaleDateString('fr-FR', options);
+        }
+
+        // Vérifier si le panier n'est pas vide
+        if (basketData && basketData.length > 0) {
+            // Parcourir les données et afficher chaque événement
+            for (let i = 0; i < basketData.length; i += 3) {
+                const title = basketData[i];
+                const start = formatDateWithoutSeconds(basketData[i + 1]); // Utilisez la fonction formatDateWithoutSeconds pour formater la date
+                const end = formatDateWithoutSeconds(basketData[i + 2]);   // Utilisez la fonction formatDateWithoutSeconds pour formater la date
+
+                // Créer des éléments HTML pour afficher les informations
+                const eventDiv = document.createElement('div');
+                eventDiv.innerHTML = `
+                <div class="container custom-container-01">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="similler-course-list-wrap mt-0">
+                                <ul class="ul simillar-course-list style-02 mt-0">
+                                    <li class="single-simillar-course-item">
+                                        <div class="thumb">
+                                            <img src="assets/img/related-course/04.jpg" alt="">
+                                        </div>
+                                        <div class="content">
+                                            <div class="left-content">
+                                                <h4 class="title">
+                                                    <a href="#">Titre: ${title}</a>
+                                                    <p href="#">Début: ${start}</p>
+                                                    <p href="#">Fin: ${end}</p>
+                                                </h4>
+
+                                                <div class="rating-and-enrolled">
+                                                    <div class="rating-wrap">
+                                                        <span class="star">
+                                                            <i class="fa-solid fa-star icon"></i>
+                                                        </span>
+                                                        <span class="nubm">4.8 (756)</span>
+                                                    </div>
+                                                    <div class="enrolled-wrap">
+                                                        <i class="fa-solid fa-user-group icon"></i>
+                                                        <span class="text">97538 Inscrits</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="right-content">
+                                                <span class="remove">Supprimer</span>
+                                                <span class="price">XOF 25.50</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+                // Ajouter l'élément au div du panier
+                panierDiv.appendChild(eventDiv);
+            }
+        } else {
+            panierDiv.innerHTML = 'Le panier est vide.';
+        }
+
+    </script>
+
+
+
+
+
+
+
+    </body>
 
 
 

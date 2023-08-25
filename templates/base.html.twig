@@ -45,6 +45,9 @@
     <!-- Responsive Css -->
     <link rel="stylesheet" href="{{ asset('assets/css/responsive.css')}}">
     <link href="{{ asset('assets/css/global.css') }}" rel="stylesheet">
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.10.1/main.min.css' rel='stylesheet' />
+    <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css' rel='stylesheet' />
+
 
     {% block stylesheets %}
                 {{ encore_entry_link_tags('app') }}
@@ -64,11 +67,11 @@
     {% endblock %}
     <header>
         <nav class="navbar navbar-area navbar-expand-lg navigation-style-02">
-            <div class="container custom-container custom-container-01">
+            <div class="container col-lg-11 custom-container custom-container-01">
                 <div class="responsive-menu">
                     <div class="logo-wrapper">
                         <a href="{{ path('home') }}" class="logo">
-                            <img src="{{ asset('assets/img/Logos/logo4.png') }}" alt="" style="min-width: 10rem !important;width: max-content;box-sizing: border-box">
+                            <img src="{{ asset('assets/img/Logos/logo4.png') }}" alt="" style="min-width: 10rem !important;width: max-content;box-sizing: border-box;">
                         </a>
                     </div>
                     <button class="navbar-toggler navbar-bs-toggler" type="button" data-bs-toggle="collapse"
@@ -76,7 +79,7 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
                 </div>
-                <div class="collapse navbar-collapse" id="themeim_main_menu">
+                <div class="collapse navbar-collapse col-md-6" id="themeim_main_menu">
                     <ul class="navbar-nav">
                         <li class="menu-item-has-children current-menu-item">
                             <a href="{{ path('home') }}">Accueil</a>

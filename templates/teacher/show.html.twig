@@ -2,14 +2,14 @@
 {% block title  %}{{teacher.name}} {% endblock %}
 
 {% block stylesheets %}
-<style>
-    #calendar{
-
-        margin:auto;
-    }
+    <style>
+        #calendar{
 
 
-</style>
+        }
+
+
+    </style>
 {% endblock %}
 
 {% block content %}
@@ -18,6 +18,7 @@
 
 
     <body>
+
 
     <!-- preloader area start -->
     <div class="preloader" id="preloader">
@@ -54,22 +55,35 @@
 
 
             <section class="about-section-area-wrapper section-bottom-space">
+
+                {#PANIER  #}
+                <div id="panier">
+                    <ul id="liste-panier">
+                        <!-- Les événements du panier seront affichés ici sous forme de liste -->
+                    </ul>
+                </div>
+                {#PANIER  #}
+
                 <div class="container custom-container-01">
                     <div class="row align-items-center row-reverse">
                         <div class="col-lg-6 col-md-12 info-prof">
                             <div class="about-content">
-                                <h3 class="content-title" style="margin-top:15rem">Information sur le professeur</h3>
+                                <h3 class="content-title" style="margin-top:15rem">Informations sur le professeur</h3>
 
-                             {#    <p class="paragraph">{{ teachers.description.descriptionComplete }}
+
+                                {#    <p class="paragraph">{{ teachers.description.descriptionComplete }}
                                 </p>
-                             #}
+                                #}
 
 
 
 
 
                                 {# {{ dump(data) }} #}
-                                <div id="calendar"></div>
+
+
+
+
 
                                 <div id="eventDetails"></div>
 
@@ -117,13 +131,15 @@
                                     </ul>
 
 
-                                 {#    <div id="calendar"></div>
+                                    {#    <div id="calendar"></div>
 
                                     <div id="eventDetails"></div>
-                                 #}
+                                    #}
 
                                 </div>
                             </div>
+
+
                         </div>
 
 
@@ -132,35 +148,35 @@
 
 
                         <div class="offset-xl-1 col-lg-6 col-md-7 col-xl-4">
-                            <div class="single-instructor-details-wrap">
+                            <div class="single-instructor-details-wrap" style="width: 40rem;">
                                 <div class="thumb">
-                                  <img src="/uploads/{{ teachers.illustration }}" alt="{{ teachers.name }}" />
+                                    <img src="/uploads/{{ teachers.illustration }}" alt="{{ teachers.name }}" />
                                 </div>
-
+                                <div id="calendar"></div>
 
 
 
 
                                 <div class="content">
-                                  {#   <div class="badge-box">
+                                    {#   <div class="badge-box">
                                         <span class="badges">Instructeur</span>
                                     </div> #}
 
-                                  {#   <h4 class="title"style="margin-top: -38px;">{{ teachers.name }}</h4> #}
+                                    {#   <h4 class="title"style="margin-top: -38px;">{{ teachers.name }}</h4> #}
                                     {# <p class="paragraph">{{ teachers.description.descriptionPreview }}</p> #}
 
 
-                                  {#
+                                    {#
 
 
-                                  <div id="calendar"></div>
+                                    <div id="calendar"></div>
 
-                                    <div id="eventDetails"></div>
-                                  Ò#}
+                                      <div id="eventDetails"></div>
+                                    Ò#}
 
 
 
-                                   {#  <div id="app"></div> #}
+                                    {#  <div id="app"></div> #}
 
 
 
@@ -174,16 +190,20 @@
                                             <span class="number">25896</span>
                                             <span class="text">Total Students</span>
                                         </div>
+                                        <div class="student-wrap">
+                                           {#  <button id="showCalendarButton">Prendre <br />rendez-vous</button>#}
+                                            <button type="button" class="prendre-rendez-vous btn btn-info btn-lg" data-professor-id="{{ teacher_id }}">Prendre <br />rendez-vous</button>
+                                        </div>
                                         <div class="review-wrap">
                                             <span class="number">4.5</span>
                                             <span class="text">78542 reviews</span>
                                         </div>
                                     </div>
 
+                                </div>
+                                {# La div si dessus fonctionne #}
 
-                                            {# La div si dessus fonctionne #}
-
-                                 {#    <div class="select-wrapper" style="height: 250px;overflow-y: auto;text-align: center !important;width: 100%;display: flex !important;justify-content: center !important;flex-direction: column !important;font-size: 16px;">
+                                {#    <div class="select-wrapper" style="height: 250px;overflow-y: auto;text-align: center !important;width: 100%;display: flex !important;justify-content: center !important;flex-direction: column !important;font-size: 16px;">
 
 <br />
                                       <label for=""> <b>Veuillez sélectionner votre/vos créneau(x) dans la liste déroulante</b></label>
@@ -192,274 +212,275 @@
                                             {% for i, hour in hours %}
                                                {#  <option value="{{ i }}">{{ hour }}</option>#}
 
-                                    {#
-                                    <span style="margin-top: 1rem;">
-                                        <input name="hours[]" type="checkbox" value="{{ i }}" {% if i == 0 %}{% endif %}>
-                               {{ hour }}</input>
-                                    </span>
-                                     {% set i = i + 1 %}
-                                 {% endfor %}
-                             </select>
-                         </div>
-#}
-
-                         {# La div si dessus fonctionne #}
-
-
-
-
-
-
-
-
-
-{#
-                                    <div>
-                                        <form>
-                                        <label><b>Choisir un créneau</b></label>
-
-                                            {% for hour in hours %}
-                                               <br /> <input type="checkbox">{{ hour }}<br /></input>
-                                            {% endfor %}
-                                        </form>
-                                        <input class="btn btn-warning" type="datetime-local" id="meeting-time"
-                                               name="meeting-time" value="2023-06-12T19:30"
-                                               min="2018-06-07T00:00" max="2030-06-14T00:00">
-                                    </div>
-
-#}
-
-
-
-                                    <ul class="ul social-media-list style-01 color-02">
-                                        <li class="single-social-item">
-                                            <a href="#" tabindex="-1">
-                                                <i class="fa-brands fa-instagram icon"></i>
-                                            </a>
-                                        </li>
-                                        <li class="single-social-item">
-                                            <a href="#" tabindex="-1">
-                                                <i class="fa-brands fa-facebook-f icon"></i>
-                                            </a>
-                                        </li>
-                                        <li class="single-social-item">
-                                            <a href="#" tabindex="-1">
-                                                <i class="fa-brands fa-youtube icon"></i>
-                                            </a>
-                                        </li>
-                                        <li class="single-social-item">
-                                            <a href="#" tabindex="-1">
-                                                <i class="fa-brands fa-linkedin-in icon"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
+                                {#
+                                <span style="margin-top: 1rem;">
+                                    <input name="hours[]" type="checkbox" value="{{ i }}" {% if i == 0 %}{% endif %}>
+                           {{ hour }}</input>
+                                </span>
+                                 {% set i = i + 1 %}
+                             {% endfor %}
+                         </select>
+                                #}
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
-            <!-- about area end here  -->
 
-            <!-- testimonial area start here  -->
-            <section class="testimonial-area-wrapper section-top-space">
-                <div class="testimonial-inner-bg">
-                    <div class="container custom-container-01">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-6">
-                                <div class="section-title-wrapper text-center">
-                                    <h4 class="section-title">Students feedback</h4>
-                                    <p class="description">Let’s see what my students gave feedback about my courses &
-                                        classes</p>
-                                </div>
+                    {# La div si dessus fonctionne #}
+
+
+
+
+
+
+
+
+
+                    {#
+                    <div>
+                        <form>
+                        <label><b>Choisir un créneau</b></label>
+
+                            {% for hour in hours %}
+                               <br /> <input type="checkbox">{{ hour }}<br /></input>
+                            {% endfor %}
+                        </form>
+                        <input class="btn btn-warning" type="datetime-local" id="meeting-time"
+                               name="meeting-time" value="2023-06-12T19:30"
+                               min="2018-06-07T00:00" max="2030-06-14T00:00">
+                    </div>
+
+                    #}
+
+
+
+                    <ul class="ul social-media-list style-01 color-02">
+                        <li class="single-social-item">
+                            <a href="#" tabindex="-1">
+                                <i class="fa-brands fa-instagram icon"></i>
+                            </a>
+                        </li>
+                        <li class="single-social-item">
+                            <a href="#" tabindex="-1">
+                                <i class="fa-brands fa-facebook-f icon"></i>
+                            </a>
+                        </li>
+                        <li class="single-social-item">
+                            <a href="#" tabindex="-1">
+                                <i class="fa-brands fa-youtube icon"></i>
+                            </a>
+                        </li>
+                        <li class="single-social-item">
+                            <a href="#" tabindex="-1">
+                                <i class="fa-brands fa-linkedin-in icon"></i>
+                            </a>
+                        </li>
+                    </ul>
+
+                </div>
+        </div>
+        </div>
+        </div>
+        </section>
+        <!-- about area end here  -->
+
+        <!-- testimonial area start here  -->
+        <section class="testimonial-area-wrapper section-top-space">
+            <div class="testimonial-inner-bg">
+                <div class="container custom-container-01">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-6">
+                            <div class="section-title-wrapper text-center">
+                                <h4 class="section-title">Students feedback</h4>
+                                <p class="description">Let’s see what my students gave feedback about my courses &
+                                    classes</p>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="slick-main global-slick-init" data-infinite="true" data-arrows="true"
-                                     data-fade="false" data-speed="500" data-dots="false" data-slidesToShow="3"
-                                     data-slidesToScroll="1" data-swipeToSlide="true" data-autoplay="true"
-                                     data-autoplaySpeed="2500" data-responsive='[
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="slick-main global-slick-init" data-infinite="true" data-arrows="true"
+                                 data-fade="false" data-speed="500" data-dots="false" data-slidesToShow="3"
+                                 data-slidesToScroll="1" data-swipeToSlide="true" data-autoplay="true"
+                                 data-autoplaySpeed="2500" data-responsive='[
                                     {"breakpoint": 1367,"settings": {"slidesToShow": 3}},
                                     {"breakpoint": 992,"settings": {"slidesToShow": 2}},
                                     {"breakpoint": 600, "settings": {"slidesToShow": 1}}
                                     ]'>
 
-                                    <div class="slick-item">
-                                        <div class="testimonial-single-items style-01 v-02  no-border">
-                                            <div class="feedback-wrap">
-                                                <ul class="ul feedback-icon-list">
-                                                    <li class="single-feedback-item">
-                                                        <i class="fas fa-star icon"></i>
-                                                    </li>
-                                                    <li class="single-feedback-item">
-                                                        <i class="fas fa-star icon"></i>
-                                                    </li>
-                                                    <li class="single-feedback-item">
-                                                        <i class="fas fa-star icon"></i>
-                                                    </li>
-                                                    <li class="single-feedback-item">
-                                                        <i class="fas fa-star icon"></i>
-                                                    </li>
-                                                    <li class="single-feedback-item">
-                                                        <i class="fas fa-star icon"></i>
-                                                    </li>
-                                                </ul>
-                                            </div>
+                                <div class="slick-item">
+                                    <div class="testimonial-single-items style-01 v-02  no-border">
+                                        <div class="feedback-wrap">
+                                            <ul class="ul feedback-icon-list">
+                                                <li class="single-feedback-item">
+                                                    <i class="fas fa-star icon"></i>
+                                                </li>
+                                                <li class="single-feedback-item">
+                                                    <i class="fas fa-star icon"></i>
+                                                </li>
+                                                <li class="single-feedback-item">
+                                                    <i class="fas fa-star icon"></i>
+                                                </li>
+                                                <li class="single-feedback-item">
+                                                    <i class="fas fa-star icon"></i>
+                                                </li>
+                                                <li class="single-feedback-item">
+                                                    <i class="fas fa-star icon"></i>
+                                                </li>
+                                            </ul>
+                                        </div>
 
-                                            <div class="content">
-                                                <p class="feedback-text">“I able to prove potential employers that i
-                                                    have a
-                                                    solid
-                                                    understanding of
-                                                    computers &
-                                                    hardware- and started to receive real, viable job offers”.</p>
-                                            </div>
+                                        <div class="content">
+                                            <p class="feedback-text">“I able to prove potential employers that i
+                                                have a
+                                                solid
+                                                understanding of
+                                                computers &
+                                                hardware- and started to receive real, viable job offers”.</p>
+                                        </div>
 
-                                            <div class="client-and-quote">
-                                                <div class="client-details">
-                                                    <div class="thumb">
-                                                        <img src="/assets/img/sections/testimonial/tesi-01.png" alt="">
-                                                    </div>
-                                                    <div class="content">
-                                                        <p class="client-name">Savannah Nguyen</p>
-                                                        <p class="designation">Central African Republic</p>
-                                                    </div>
+                                        <div class="client-and-quote">
+                                            <div class="client-details">
+                                                <div class="thumb">
+                                                    <img src="/assets/img/sections/testimonial/tesi-01.png" alt="">
+                                                </div>
+                                                <div class="content">
+                                                    <p class="client-name">Savannah Nguyen</p>
+                                                    <p class="designation">Central African Republic</p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                </div>
 
-                                    <div class="slick-item">
-                                        <div class="testimonial-single-items style-01 v-02  no-border">
-                                            <div class="feedback-wrap">
-                                                <ul class="ul feedback-icon-list">
-                                                    <li class="single-feedback-item">
-                                                        <i class="fas fa-star icon"></i>
-                                                    </li>
-                                                    <li class="single-feedback-item">
-                                                        <i class="fas fa-star icon"></i>
-                                                    </li>
-                                                    <li class="single-feedback-item">
-                                                        <i class="fas fa-star icon"></i>
-                                                    </li>
-                                                    <li class="single-feedback-item">
-                                                        <i class="fas fa-star icon"></i>
-                                                    </li>
-                                                    <li class="single-feedback-item">
-                                                        <i class="fas fa-star icon"></i>
-                                                    </li>
-                                                </ul>
-                                            </div>
+                                <div class="slick-item">
+                                    <div class="testimonial-single-items style-01 v-02  no-border">
+                                        <div class="feedback-wrap">
+                                            <ul class="ul feedback-icon-list">
+                                                <li class="single-feedback-item">
+                                                    <i class="fas fa-star icon"></i>
+                                                </li>
+                                                <li class="single-feedback-item">
+                                                    <i class="fas fa-star icon"></i>
+                                                </li>
+                                                <li class="single-feedback-item">
+                                                    <i class="fas fa-star icon"></i>
+                                                </li>
+                                                <li class="single-feedback-item">
+                                                    <i class="fas fa-star icon"></i>
+                                                </li>
+                                                <li class="single-feedback-item">
+                                                    <i class="fas fa-star icon"></i>
+                                                </li>
+                                            </ul>
+                                        </div>
 
-                                            <div class="content">
-                                                <p class="feedback-text">“I able to prove potential employers that i
-                                                    have a
-                                                    solid
-                                                    understanding of
-                                                    computers &
-                                                    hardware- and started to receive real, viable job offers”.</p>
-                                            </div>
+                                        <div class="content">
+                                            <p class="feedback-text">“I able to prove potential employers that i
+                                                have a
+                                                solid
+                                                understanding of
+                                                computers &
+                                                hardware- and started to receive real, viable job offers”.</p>
+                                        </div>
 
-                                            <div class="client-and-quote">
-                                                <div class="client-details">
-                                                    <div class="thumb">
-                                                        <img src="/assets/img/sections/testimonial/testi-02.png" alt="">
-                                                    </div>
-                                                    <div class="content">
-                                                        <p class="client-name">Kathryn Murphy</p>
-                                                        <p class="designation">Monaco</p>
-                                                    </div>
+                                        <div class="client-and-quote">
+                                            <div class="client-details">
+                                                <div class="thumb">
+                                                    <img src="/assets/img/sections/testimonial/testi-02.png" alt="">
+                                                </div>
+                                                <div class="content">
+                                                    <p class="client-name">Kathryn Murphy</p>
+                                                    <p class="designation">Monaco</p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                </div>
 
-                                    <div class="slick-item">
-                                        <div class="testimonial-single-items style-01 v-02  no-border">
-                                            <div class="feedback-wrap">
-                                                <ul class="ul feedback-icon-list">
-                                                    <li class="single-feedback-item">
-                                                        <i class="fas fa-star icon"></i>
-                                                    </li>
-                                                    <li class="single-feedback-item">
-                                                        <i class="fas fa-star icon"></i>
-                                                    </li>
-                                                    <li class="single-feedback-item">
-                                                        <i class="fas fa-star icon"></i>
-                                                    </li>
-                                                    <li class="single-feedback-item">
-                                                        <i class="fas fa-star icon"></i>
-                                                    </li>
-                                                    <li class="single-feedback-item">
-                                                        <i class="fas fa-star icon"></i>
-                                                    </li>
-                                                </ul>
-                                            </div>
+                                <div class="slick-item">
+                                    <div class="testimonial-single-items style-01 v-02  no-border">
+                                        <div class="feedback-wrap">
+                                            <ul class="ul feedback-icon-list">
+                                                <li class="single-feedback-item">
+                                                    <i class="fas fa-star icon"></i>
+                                                </li>
+                                                <li class="single-feedback-item">
+                                                    <i class="fas fa-star icon"></i>
+                                                </li>
+                                                <li class="single-feedback-item">
+                                                    <i class="fas fa-star icon"></i>
+                                                </li>
+                                                <li class="single-feedback-item">
+                                                    <i class="fas fa-star icon"></i>
+                                                </li>
+                                                <li class="single-feedback-item">
+                                                    <i class="fas fa-star icon"></i>
+                                                </li>
+                                            </ul>
+                                        </div>
 
-                                            <div class="content">
-                                                <p class="feedback-text">“I able to prove potential employers that i
-                                                    have a
-                                                    solid
-                                                    understanding of
-                                                    computers &
-                                                    hardware- and started to receive real, viable job offers”.</p>
-                                            </div>
+                                        <div class="content">
+                                            <p class="feedback-text">“I able to prove potential employers that i
+                                                have a
+                                                solid
+                                                understanding of
+                                                computers &
+                                                hardware- and started to receive real, viable job offers”.</p>
+                                        </div>
 
-                                            <div class="client-and-quote">
-                                                <div class="client-details">
-                                                    <div class="thumb">
-                                                        <img src="/assets/img/sections/testimonial/testi-03.png" alt="">
-                                                    </div>
-                                                    <div class="content">
-                                                        <p class="client-name">Kristin Watson</p>
-                                                        <p class="designation">Guinea</p>
-                                                    </div>
+                                        <div class="client-and-quote">
+                                            <div class="client-details">
+                                                <div class="thumb">
+                                                    <img src="/assets/img/sections/testimonial/testi-03.png" alt="">
+                                                </div>
+                                                <div class="content">
+                                                    <p class="client-name">Kristin Watson</p>
+                                                    <p class="designation">Guinea</p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                </div>
 
-                                    <div class="slick-item">
-                                        <div class="testimonial-single-items style-01 v-02  no-border">
-                                            <div class="feedback-wrap">
-                                                <ul class="ul feedback-icon-list">
-                                                    <li class="single-feedback-item">
-                                                        <i class="fas fa-star icon"></i>
-                                                    </li>
-                                                    <li class="single-feedback-item">
-                                                        <i class="fas fa-star icon"></i>
-                                                    </li>
-                                                    <li class="single-feedback-item">
-                                                        <i class="fas fa-star icon"></i>
-                                                    </li>
-                                                    <li class="single-feedback-item">
-                                                        <i class="fas fa-star icon"></i>
-                                                    </li>
-                                                    <li class="single-feedback-item">
-                                                        <i class="fas fa-star icon"></i>
-                                                    </li>
-                                                </ul>
-                                            </div>
+                                <div class="slick-item">
+                                    <div class="testimonial-single-items style-01 v-02  no-border">
+                                        <div class="feedback-wrap">
+                                            <ul class="ul feedback-icon-list">
+                                                <li class="single-feedback-item">
+                                                    <i class="fas fa-star icon"></i>
+                                                </li>
+                                                <li class="single-feedback-item">
+                                                    <i class="fas fa-star icon"></i>
+                                                </li>
+                                                <li class="single-feedback-item">
+                                                    <i class="fas fa-star icon"></i>
+                                                </li>
+                                                <li class="single-feedback-item">
+                                                    <i class="fas fa-star icon"></i>
+                                                </li>
+                                                <li class="single-feedback-item">
+                                                    <i class="fas fa-star icon"></i>
+                                                </li>
+                                            </ul>
+                                        </div>
 
-                                            <div class="content">
-                                                <p class="feedback-text">“I able to prove potential employers that i
-                                                    have a
-                                                    solid
-                                                    understanding of
-                                                    computers &
-                                                    hardware- and started to receive real, viable job offers”.</p>
-                                            </div>
+                                        <div class="content">
+                                            <p class="feedback-text">“I able to prove potential employers that i
+                                                have a
+                                                solid
+                                                understanding of
+                                                computers &
+                                                hardware- and started to receive real, viable job offers”.</p>
+                                        </div>
 
-                                            <div class="client-and-quote">
-                                                <div class="client-details">
-                                                    <div class="thumb">
-                                                        <img src="/assets/img/sections/testimonial/testi-02.png" alt="">
-                                                    </div>
-                                                    <div class="content">
-                                                        <p class="client-name">Savannah Nguyen</p>
-                                                        <p class="designation">Central African Republic</p>
-                                                    </div>
+                                        <div class="client-and-quote">
+                                            <div class="client-details">
+                                                <div class="thumb">
+                                                    <img src="/assets/img/sections/testimonial/testi-02.png" alt="">
+                                                </div>
+                                                <div class="content">
+                                                    <p class="client-name">Savannah Nguyen</p>
+                                                    <p class="designation">Central African Republic</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -469,297 +490,298 @@
                         </div>
                     </div>
                 </div>
-            </section>
-            <!-- testimonial area end here  -->
+            </div>
+        </section>
+        <!-- testimonial area end here  -->
 
-            <!-- course area start hare  -->
-            <section class="course-area-wrapper section-top-space">
-                <div class="container custom-container-01">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-6">
-                            <div class="section-title-wrapper text-center">
-                                <h4 class="section-title">My all courses</h4>
-                                <p class="description">I have total 4 courses live on Eduplan courses platform</p>
-                            </div>
+        <!-- course area start hare  -->
+        <section class="course-area-wrapper section-top-space">
+            <div class="container custom-container-01">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6">
+                        <div class="section-title-wrapper text-center">
+                            <h4 class="section-title">My all courses</h4>
+                            <p class="description">I have total 4 courses live on Eduplan courses platform</p>
                         </div>
                     </div>
+                </div>
 
-                    <div class="row column-gap">
-                        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-                            <div class="single-course-item">
-                                <div class="thumbnail zoom-in">
-                                    <div class="background-image"
-                                         style="background-image: url(/assets/img/course/01.png);"></div>
+                <div class="row column-gap">
+                    <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
+                        <div class="single-course-item">
+                            <div class="thumbnail zoom-in">
+                                <div class="background-image"
+                                     style="background-image: url(/assets/img/course/01.png);"></div>
+                            </div>
+                            <div class="contact">
+                                <p class="tag">Harverd University</p>
+                                <h3 class="title">
+                                    <a href="#">Become Ethereum Blockchain Developer</a>
+                                </h3>
+
+                                <div class="meta-box">
+                                    <div class="left-content">
+                                        <di class="feedback">
+                                            <i class="fas fa-star icon"></i>
+                                            <span class="text">4.8 (756)</span>
+                                        </di>
+                                    </div>
+                                    <div class="right-content">
+                                        <p class="price">$25.50</p>
+                                    </div>
                                 </div>
+                            </div>
+
+                            <div class="hover-option">
                                 <div class="contact">
                                     <p class="tag">Harverd University</p>
                                     <h3 class="title">
                                         <a href="#">Become Ethereum Blockchain Developer</a>
                                     </h3>
 
+                                    <p class="paragraph">We have professional alliance's with leading Universities
+                                        Colleges
+                                        around the world.
+                                    </p>
+
                                     <div class="meta-box">
                                         <div class="left-content">
                                             <di class="feedback">
-                                                <i class="fas fa-star icon"></i>
-                                                <span class="text">4.8 (756)</span>
+                                                <i class="fa-solid fa-user-group icon"></i>
+                                                <span class="text">548796</span>
                                             </di>
                                         </div>
                                         <div class="right-content">
-                                            <p class="price">$25.50</p>
+                                            <i class="fa-solid fa-clock icon"></i>
+                                            <span class="duration">23 hr 54 min</span>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="hover-option">
-                                    <div class="contact">
-                                        <p class="tag">Harverd University</p>
-                                        <h3 class="title">
-                                            <a href="#">Become Ethereum Blockchain Developer</a>
-                                        </h3>
+                                    <div class="video-play-wrapper">
+                                        <a class="video-play-btn mfp-iframe"
+                                           href="https://www.youtube.com/watch?v=c7XEhXZ_rsk">
+                                            <svg width="14" height="25" viewBox="0 0 14 25" fill="none"
+                                                 xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                        d="M13.124 12.6362L0.364909 24.7606L0.36491 0.511875L13.124 12.6362Z"
+                                                        fill="white"></path>
+                                            </svg>
+                                        </a>
 
-                                        <p class="paragraph">We have professional alliance's with leading Universities
-                                            Colleges
-                                            around the world.
-                                        </p>
-
-                                        <div class="meta-box">
-                                            <div class="left-content">
-                                                <di class="feedback">
-                                                    <i class="fa-solid fa-user-group icon"></i>
-                                                    <span class="text">548796</span>
-                                                </di>
-                                            </div>
-                                            <div class="right-content">
-                                                <i class="fa-solid fa-clock icon"></i>
-                                                <span class="duration">23 hr 54 min</span>
-                                            </div>
-                                        </div>
-
-                                        <div class="video-play-wrapper">
-                                            <a class="video-play-btn mfp-iframe"
-                                               href="https://www.youtube.com/watch?v=c7XEhXZ_rsk">
-                                                <svg width="14" height="25" viewBox="0 0 14 25" fill="none"
-                                                     xmlns="http://www.w3.org/2000/svg">
-                                                    <path
-                                                            d="M13.124 12.6362L0.364909 24.7606L0.36491 0.511875L13.124 12.6362Z"
-                                                            fill="white"></path>
-                                                </svg>
-                                            </a>
-
-                                            <p class="text">Watch Intro</p>
-                                        </div>
+                                        <p class="text">Watch Intro</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-                            <div class="single-course-item">
-                                <div class="thumbnail zoom-in">
-                                    <div class="background-image"
-                                         style="background-image: url(/assets/img/course/02.png);"></div>
+                    <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
+                        <div class="single-course-item">
+                            <div class="thumbnail zoom-in">
+                                <div class="background-image"
+                                     style="background-image: url(/assets/img/course/02.png);"></div>
+                            </div>
+                            <div class="contact">
+                                <p class="tag">Esther Howard</p>
+                                <h3 class="title">
+                                    <a href="#">Leadership Training: Human Leadership</a>
+                                </h3>
+
+                                <div class="meta-box">
+                                    <div class="left-content">
+                                        <di class="feedback">
+                                            <i class="fas fa-star icon"></i>
+                                            <span class="text">4.8 (756)</span>
+                                        </di>
+                                    </div>
+                                    <div class="right-content">
+                                        <p class="price">$25.50</p>
+                                    </div>
                                 </div>
+                            </div>
+
+                            <div class="hover-option">
                                 <div class="contact">
                                     <p class="tag">Esther Howard</p>
                                     <h3 class="title">
                                         <a href="#">Leadership Training: Human Leadership</a>
                                     </h3>
 
+                                    <p class="paragraph">We have professional alliance's with leading Universities
+                                        Colleges
+                                        around the world.
+                                    </p>
+
                                     <div class="meta-box">
                                         <div class="left-content">
                                             <di class="feedback">
-                                                <i class="fas fa-star icon"></i>
-                                                <span class="text">4.8 (756)</span>
+                                                <i class="fa-solid fa-user-group icon"></i>
+                                                <span class="text">548796</span>
                                             </di>
                                         </div>
                                         <div class="right-content">
-                                            <p class="price">$25.50</p>
+                                            <i class="fa-solid fa-clock icon"></i>
+                                            <span class="duration">23 hr 54 min</span>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="hover-option">
-                                    <div class="contact">
-                                        <p class="tag">Esther Howard</p>
-                                        <h3 class="title">
-                                            <a href="#">Leadership Training: Human Leadership</a>
-                                        </h3>
+                                    <div class="video-play-wrapper">
+                                        <a class="video-play-btn mfp-iframe"
+                                           href="https://www.youtube.com/watch?v=c7XEhXZ_rsk">
+                                            <svg width="14" height="25" viewBox="0 0 14 25" fill="none"
+                                                 xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                        d="M13.124 12.6362L0.364909 24.7606L0.36491 0.511875L13.124 12.6362Z"
+                                                        fill="white"></path>
+                                            </svg>
+                                        </a>
 
-                                        <p class="paragraph">We have professional alliance's with leading Universities
-                                            Colleges
-                                            around the world.
-                                        </p>
-
-                                        <div class="meta-box">
-                                            <div class="left-content">
-                                                <di class="feedback">
-                                                    <i class="fa-solid fa-user-group icon"></i>
-                                                    <span class="text">548796</span>
-                                                </di>
-                                            </div>
-                                            <div class="right-content">
-                                                <i class="fa-solid fa-clock icon"></i>
-                                                <span class="duration">23 hr 54 min</span>
-                                            </div>
-                                        </div>
-
-                                        <div class="video-play-wrapper">
-                                            <a class="video-play-btn mfp-iframe"
-                                               href="https://www.youtube.com/watch?v=c7XEhXZ_rsk">
-                                                <svg width="14" height="25" viewBox="0 0 14 25" fill="none"
-                                                     xmlns="http://www.w3.org/2000/svg">
-                                                    <path
-                                                            d="M13.124 12.6362L0.364909 24.7606L0.36491 0.511875L13.124 12.6362Z"
-                                                            fill="white"></path>
-                                                </svg>
-                                            </a>
-
-                                            <p class="text">Watch Intro</p>
-                                        </div>
+                                        <p class="text">Watch Intro</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-                            <div class="single-course-item">
-                                <div class="thumbnail zoom-in">
-                                    <div class="background-image"
-                                         style="background-image: url(/assets/img/course/03.png);"></div>
+                    <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
+                        <div class="single-course-item">
+                            <div class="thumbnail zoom-in">
+                                <div class="background-image"
+                                     style="background-image: url(/assets/img/course/03.png);"></div>
+                            </div>
+                            <div class="contact">
+                                <p class="tag">Leslie Alexander</p>
+                                <h3 class="title">
+                                    <a href="#">Beginner friendly web development course A2Z</a>
+                                </h3>
+
+                                <div class="meta-box">
+                                    <div class="left-content">
+                                        <di class="feedback">
+                                            <i class="fas fa-star icon"></i>
+                                            <span class="text">4.8 (756)</span>
+                                        </di>
+                                    </div>
+                                    <div class="right-content">
+                                        <p class="price">$25.50</p>
+                                    </div>
                                 </div>
+                            </div>
+
+                            <div class="hover-option">
                                 <div class="contact">
                                     <p class="tag">Leslie Alexander</p>
                                     <h3 class="title">
                                         <a href="#">Beginner friendly web development course A2Z</a>
                                     </h3>
 
+                                    <p class="paragraph">We have professional alliance's with leading Universities
+                                        Colleges
+                                        around the world.
+                                    </p>
+
                                     <div class="meta-box">
                                         <div class="left-content">
                                             <di class="feedback">
-                                                <i class="fas fa-star icon"></i>
-                                                <span class="text">4.8 (756)</span>
+                                                <i class="fa-solid fa-user-group icon"></i>
+                                                <span class="text">548796</span>
                                             </di>
                                         </div>
                                         <div class="right-content">
-                                            <p class="price">$25.50</p>
+                                            <i class="fa-solid fa-clock icon"></i>
+                                            <span class="duration">23 hr 54 min</span>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="hover-option">
-                                    <div class="contact">
-                                        <p class="tag">Leslie Alexander</p>
-                                        <h3 class="title">
-                                            <a href="#">Beginner friendly web development course A2Z</a>
-                                        </h3>
+                                    <div class="video-play-wrapper">
+                                        <a class="video-play-btn mfp-iframe"
+                                           href="https://www.youtube.com/watch?v=c7XEhXZ_rsk">
+                                            <svg width="14" height="25" viewBox="0 0 14 25" fill="none"
+                                                 xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                        d="M13.124 12.6362L0.364909 24.7606L0.36491 0.511875L13.124 12.6362Z"
+                                                        fill="white"></path>
+                                            </svg>
+                                        </a>
 
-                                        <p class="paragraph">We have professional alliance's with leading Universities
-                                            Colleges
-                                            around the world.
-                                        </p>
-
-                                        <div class="meta-box">
-                                            <div class="left-content">
-                                                <di class="feedback">
-                                                    <i class="fa-solid fa-user-group icon"></i>
-                                                    <span class="text">548796</span>
-                                                </di>
-                                            </div>
-                                            <div class="right-content">
-                                                <i class="fa-solid fa-clock icon"></i>
-                                                <span class="duration">23 hr 54 min</span>
-                                            </div>
-                                        </div>
-
-                                        <div class="video-play-wrapper">
-                                            <a class="video-play-btn mfp-iframe"
-                                               href="https://www.youtube.com/watch?v=c7XEhXZ_rsk">
-                                                <svg width="14" height="25" viewBox="0 0 14 25" fill="none"
-                                                     xmlns="http://www.w3.org/2000/svg">
-                                                    <path
-                                                            d="M13.124 12.6362L0.364909 24.7606L0.36491 0.511875L13.124 12.6362Z"
-                                                            fill="white"></path>
-                                                </svg>
-                                            </a>
-
-                                            <p class="text">Watch Intro</p>
-                                        </div>
+                                        <p class="text">Watch Intro</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-                            <div class="single-course-item">
-                                <div class="thumbnail zoom-in">
-                                    <div class="background-image"
-                                         style="background-image: url(/assets/img/course/04.png);"></div>
+                    <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
+                        <div class="single-course-item">
+                            <div class="thumbnail zoom-in">
+                                <div class="background-image"
+                                     style="background-image: url(/assets/img/course/04.png);"></div>
+                            </div>
+                            <div class="contact">
+                                <p class="tag">Ralph Edwards</p>
+                                <h3 class="title">
+                                    <a href="#">The Ultimate Drawing Course - Beginner to Advanced</a>
+                                </h3>
+
+                                <div class="meta-box">
+                                    <div class="left-content">
+                                        <di class="feedback">
+                                            <i class="fas fa-star icon"></i>
+                                            <span class="text">4.8 (756)</span>
+                                        </di>
+                                    </div>
+                                    <div class="right-content">
+                                        <p class="price">$25.50</p>
+                                    </div>
                                 </div>
+                            </div>
+
+                            <div class="hover-option">
                                 <div class="contact">
                                     <p class="tag">Ralph Edwards</p>
                                     <h3 class="title">
                                         <a href="#">The Ultimate Drawing Course - Beginner to Advanced</a>
                                     </h3>
 
+                                    <p class="paragraph">We have professional alliance's with leading Universities
+                                        Colleges
+                                        around the world.
+                                    </p>
+
                                     <div class="meta-box">
                                         <div class="left-content">
                                             <di class="feedback">
-                                                <i class="fas fa-star icon"></i>
-                                                <span class="text">4.8 (756)</span>
+                                                <i class="fa-solid fa-user-group icon"></i>
+                                                <span class="text">548796</span>
                                             </di>
                                         </div>
                                         <div class="right-content">
-                                            <p class="price">$25.50</p>
+                                            <i class="fa-solid fa-clock icon"></i>
+                                            <span class="duration">23 hr 54 min</span>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="hover-option">
-                                    <div class="contact">
-                                        <p class="tag">Ralph Edwards</p>
-                                        <h3 class="title">
-                                            <a href="#">The Ultimate Drawing Course - Beginner to Advanced</a>
-                                        </h3>
+                                    <div class="video-play-wrapper">
+                                        <a class="video-play-btn mfp-iframe"
+                                           href="https://www.youtube.com/watch?v=c7XEhXZ_rsk">
+                                            <svg width="14" height="25" viewBox="0 0 14 25" fill="none"
+                                                 xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                        d="M13.124 12.6362L0.364909 24.7606L0.36491 0.511875L13.124 12.6362Z"
+                                                        fill="white"></path>
+                                            </svg>
+                                        </a>
 
-                                        <p class="paragraph">We have professional alliance's with leading Universities
-                                            Colleges
-                                            around the world.
-                                        </p>
-
-                                        <div class="meta-box">
-                                            <div class="left-content">
-                                                <di class="feedback">
-                                                    <i class="fa-solid fa-user-group icon"></i>
-                                                    <span class="text">548796</span>
-                                                </di>
-                                            </div>
-                                            <div class="right-content">
-                                                <i class="fa-solid fa-clock icon"></i>
-                                                <span class="duration">23 hr 54 min</span>
-                                            </div>
-                                        </div>
-
-                                        <div class="video-play-wrapper">
-                                            <a class="video-play-btn mfp-iframe"
-                                               href="https://www.youtube.com/watch?v=c7XEhXZ_rsk">
-                                                <svg width="14" height="25" viewBox="0 0 14 25" fill="none"
-                                                     xmlns="http://www.w3.org/2000/svg">
-                                                    <path
-                                                            d="M13.124 12.6362L0.364909 24.7606L0.36491 0.511875L13.124 12.6362Z"
-                                                            fill="white"></path>
-                                                </svg>
-                                            </a>
-
-                                            <p class="text">Watch Intro</p>
-                                        </div>
+                                        <p class="text">Watch Intro</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </section>
-            <!-- course area end hare  -->
+            </div>
+        </section>
+        <!-- course area end hare  -->
         </div>
         <!-- about page end here  -->
 
@@ -778,11 +800,15 @@
 
 
     <script src='fullcalendar/dist/index.global.js'></script>
-<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js" integrity="sha256-8EcfIJRWyvnu/U0OsfCk05x1JGVmeC2a7sJQHrbWYSA=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js" integrity="sha256-8EcfIJRWyvnu/U0OsfCk05x1JGVmeC2a7sJQHrbWYSA=" crossorigin="anonymous"></script>
     {% block javascript %}
 
 
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.10.1/main.min.js'></script>
+
     <script>
+
 
         document.addEventListener('DOMContentLoaded', function() {
         (async () => {
@@ -792,19 +818,61 @@
         const horaire = responseJSON;
 
         const planning = horaire.map(current_obj => ({
+            id: uuidv4(),
             title: current_obj.title,
             start: current_obj.start,
             end: current_obj.end,
         }));
-
-        const basket = [];
+console.log(planning);
+       // const basket = [];
+        const basket = JSON.parse(localStorage.getItem('basket')) || [];
         var calendarEl = document.getElementById('calendar');
 
         var calendar = new FullCalendar.Calendar(calendarEl, {
             timeZone: 'local',
             eventClick: (event) => {
+               // event.el.style.borderColor = 'red';
+              // event.el.style.backgroundColor='yellow';
+
+
+                console.log(planning);
                 // Add the event to the basket
-                basket.push(event);
+                basket.push(event.event.title);
+                basket.push(event.event.start);
+                basket.push(event.event.end);
+                const panierContainer = document.getElementById('liste-panier');
+                localStorage.setItem('basket', JSON.stringify(basket));
+
+                alert("L'article a été ajouté au panier.");
+
+                // Créer un élément HTML pour afficher l'événement
+                const eventElement = document.createElement('li');
+               // eventElement.textContent = event.title;
+              //  eventElement.textContent = `Titre: ${event.event.title}, Début: ${event.event.start}, Fin: ${event.event.end}`;
+
+
+                 // Créer un élément texte pour chaque ligne
+                const titleText = document.createTextNode(`Titre: ${event.event.title}`);
+                const startText = document.createTextNode(`Début: ${event.event.start}`);
+                const endText = document.createTextNode(`Fin: ${event.event.end}`);
+
+                // Ajouter les éléments texte à l'élément de la liste
+                eventElement.appendChild(titleText);
+                eventElement.appendChild(document.createElement('br')); // Ajouter un saut de ligne
+                eventElement.appendChild(startText);
+                eventElement.appendChild(document.createElement('br')); // Ajouter un saut de ligne
+                eventElement.appendChild(endText);
+                eventElement.appendChild(document.createElement('br'));
+                eventElement.appendChild(document.createElement('br'));
+
+                // Ajouter l'ID de l'événement comme attribut (utile pour la suppression)
+                eventElement.setAttribute('data-event-id', event.event.id);
+                eventElement.setAttribute('data-event-title', event.event.title);
+                eventElement.setAttribute('data-event-start', event.event.start);
+                eventElement.setAttribute('data-event-end', event.event.end);
+
+                // Ajouter l'élément à la section du panier
+                panierContainer.appendChild(eventElement);
 
                 // Make an AJAX request to add the event to the basket
                 const url = "/panier";
@@ -818,6 +886,7 @@
                 .then((response) => {
                     if (response.ok) {
                         // The event was added to the basket successfully
+                      //  window.location.href = "/panier";
                         console.log(basket);
                     } else {
                         // There was an error adding the event to the basket
@@ -828,9 +897,9 @@
                 });
             },
 
-            themeSystem: 'literia',
-            slotDuration: '01:00',
-            initialView: 'dayGridMonth',
+            themeSystem: 'bootstrap',
+          //  slotDuration: '01:00',
+            initialView: 'timeGridWeek',
             locale: 'fr',
 
             headerToolbar: {
@@ -838,10 +907,23 @@
                 center: 'title',
                 end: 'dayGridMonth,timeGridWeek,listWeek',
             },
+            buttonText: {
+                today: 'Aujourd\'hui',
+                month: 'Mois',
+                week: 'Semaine',
+                list: 'Liste'
+            },
 
             editable: true,
             selectable: true,
             navLinks: true,
+            eventDrop:(infos) => {
+                if(!confirm("Etes vous sur de vouloir déplacer cet évènement")){
+                    infos.revert()
+
+                }else
+                console.log(infos.event.start)
+            },
             dateClick: function(info) {
                 alert('Date: ' + info.dateStr);
                 alert('Resource ID: ' + info.title);
@@ -851,10 +933,12 @@
             eventContent: function(arg) {
                 // Récupérer l'ID du professeur pour l'événement actuel
                 var id = arg.event.extendedProps.id;
+
                 // Assurez-vous que cette propriété existe dans vos données
 
                 // Comparer l'ID du professeur avec l'ID du professeur actuel
                 if (id === id) { // Remplacez 123 par l'ID du professeur actuel
+                      console.log(id);
                     return {
                         html: arg.event.title // Afficher le titre de l'événement
                     };
@@ -866,10 +950,46 @@
             // ... autres options du calendrier ...
         });
 
-        calendar.render();
+function uuidv4() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        var r = Math.random() * 16 | 0,
+            v = c == 'x' ? r : (r & 0x3 | 0x8);
+        return v.toString(16);
+    });
+}
 
+
+
+
+ // Sélectionnez tous les boutons "Prendre rendez-vous"
+    const prendreRendezVousButtons = document.querySelectorAll('.prendre-rendez-vous');
+
+    //Pour renvoyer vers
+    // Ajoutez un gestionnaire d'événements au clic sur chaque bouton
+    prendreRendezVousButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Récupérez l'ID du professeur à partir de l'attribut data
+            const professorId = button.getAttribute('data-professor-id');
+
+            // Redirigez l'utilisateur vers la page du calendrier du professeur
+           // window.location.href = `/teacher/?id=${professorId}`;
+            window.location.href = '{{ path('calendar', {'slug': teachers.slug}) }}'
+        });
+ });
+
+
+
+
+
+        var showCalendarButton = document.getElementById('showCalendarButton');
+      showCalendarButton.addEventListener('click', function() {
+
+        calendar.render();
+})
     })()
+
 });
+
 
 </script>
 

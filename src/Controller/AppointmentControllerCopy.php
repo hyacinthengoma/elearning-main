@@ -53,6 +53,7 @@ class AppointmentControllerCopy extends AbstractController
 
             ];
         }
+
           return new JsonResponse($rdv);
         //return $formatted_hours;
     }

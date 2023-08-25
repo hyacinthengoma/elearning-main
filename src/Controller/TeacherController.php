@@ -103,6 +103,7 @@ class TeacherController extends AbstractController
         $appointments = $this->entityManager->getRepository(Appointment::class)->findBy(['teachers'=>$id]);
 
         $hours = [];
+        $intervalId = 0;
 
         foreach ($appointments as $appointment) {
             if ($appointment->getCourseId() == null) {
@@ -121,12 +122,12 @@ class TeacherController extends AbstractController
                     }
 
                     $hours[] = [
-                        'id' => $appointment->getId(),
+                        'id' => $appointment->getId() . '-' . $intervalId++,
                         'start' => $currentHour->format('Y-m-d H:i:s'),
                         'end' => $nextHour->format('Y-m-d H:i:s'),
                         'title' => $appointment->getTitle(),
                     ];
-
+//dd($hours);
                     $currentHour = clone $nextHour;
                 }
             }
