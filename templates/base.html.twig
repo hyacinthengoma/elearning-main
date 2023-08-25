@@ -49,6 +49,9 @@
     <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css' rel='stylesheet' />
 
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
+
     {% block stylesheets %}
                 {{ encore_entry_link_tags('app') }}
     {% endblock %}
@@ -64,6 +67,9 @@
     <body>
     {% block javascripts %}
         {{ encore_entry_script_tags('app') }}
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     {% endblock %}
     <header>
         <nav class="navbar navbar-area navbar-expand-lg navigation-style-02">

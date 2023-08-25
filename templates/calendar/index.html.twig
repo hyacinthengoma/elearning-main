@@ -45,7 +45,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Abandonner</button>
-                <button type="button" class="btn btn-primary">Ajouter au panier</button>
+                <button type="button" id="add-to-cart-button" class="btn btn-primary">Ajouter au panier</button>
             </div>
         </div>
     </div>
@@ -691,6 +691,11 @@
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js" integrity="sha256-8EcfIJRWyvnu/U0OsfCk05x1JGVmeC2a7sJQHrbWYSA=" crossorigin="anonymous"></script>
 {% block javascript %}
 
+//script ci-dessous pour les notifications
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js" ></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+//script ci dessus pour les notifications
+
 
 <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.10.1/main.min.js'></script>
@@ -739,14 +744,27 @@ console.log(planning);
 
 
                 console.log(planning);
+                //Gestionnaire d'événements pour le bouton "Ajouter au panier &&
                 // Add the event to the basket
+                $('#add-to-cart-button').off().on('click', function() {
+                toastr.options = {
+              //  positionClass: 'toast-top-full-width', // Choisissez la position de la notification
+                positionClass: 'toast-top-left', // Choisissez la position de la notification
+                closeButton: true, // Affiche le bouton de fermeture
+};
                 basket.push(event.event.title);
                 basket.push(event.event.start);
                 basket.push(event.event.end);
                 const panierContainer = document.getElementById('liste-panier');
                 localStorage.setItem('basket', JSON.stringify(basket));
 
-                alert("L'article a été ajouté au panier.");
+                // Fermez la modal
+                toastr.success("Le créneau a bien été ajouté au panier");
+                $('#booking_popup').modal('hide');
+               // alert("L'article a été ajouté au panier.");
+                // Détachez le gestionnaire d'événements après l'avoir utilisé pour évité plusieurs notification
+                $(this).off('click');
+        });
 
                 // Créer un élément HTML pour afficher l'événement
                 const eventElement = document.createElement('li');
