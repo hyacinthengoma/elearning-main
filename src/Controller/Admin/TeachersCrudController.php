@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Teachers;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
@@ -34,6 +35,8 @@ class TeachersCrudController extends AbstractCrudController
 
             EmailField::new('email', 'Adresse Email'),
             AssociationField::new('description')->renderAsEmbeddedForm(),
+            AssociationField::new('category'),
+            AssociationField::new('subcategory'),
            //     ->setTargetFieldName(['lastname','firstname']),
 //            TextField::new('title'),
 //            TextEditorField::new('description'),
@@ -59,6 +62,12 @@ class TeachersCrudController extends AbstractCrudController
 
 
         ];
+    }
+
+    public function configureAssets(Assets $assets): Assets
+    {
+        return Assets::new()
+            ->addJsFile('/assets/js/dynamic_subcategory.js'); // Chemin vers votre fichier JavaScript
     }
 
 }

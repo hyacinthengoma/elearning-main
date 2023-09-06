@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Categories{% endblock %}
+
+{% block body %}
+    <h1>Create new Categories</h1>
+
+    {{ form_start(form) }}
+
+{#  {{ form_widget(form) }}  #}
+
+    {{ form_row(form.categories) }}
+    {{ form_row(form.subcategory) }}
+    <button type="submit" class="btn btn-primary" formnovalidate>Enregistrer</button>
+    {{ form_end(form) }}
+
+
+
+   {#  {{ include('categories/_form.html.twig') }}  #}
+
+    <a href="{{ path('app_categories_index') }}">back to list</a>
+{% endblock %}

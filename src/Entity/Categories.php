@@ -8,6 +8,9 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CategoriesRepository::class)]
+/**
+ * @ORM\Table(name="category")
+ */
 class Categories
 {
     #[ORM\Id]
@@ -18,19 +21,21 @@ class Categories
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    #[ORM\ManyToOne(targetEntity: self::class, inversedBy: 'categories')]
-    private ?self $SubCategory = null;
-
-    #[ORM\OneToMany(mappedBy: 'SubCategory', targetEntity: self::class)]
-    private Collection $categories;
-
     #[ORM\ManyToMany(targetEntity: Course::class, mappedBy: 'categories')]
     private Collection $courses;
+
+    #[ORM\OneToMany(mappedBy: 'categories', targetEntity: SubCategory::class)]
+    private Collection $subcategory;
+
+    #[ORM\ManyToMany(targetEntity: Teachers::class, mappedBy: 'category')]
+    private Collection $teachers;
 
     public function __construct()
     {
         $this->categories = new ArrayCollection();
         $this->courses = new ArrayCollection();
+        $this->subcategory = new ArrayCollection();
+        $this->teachers = new ArrayCollection();
     }
 
 
@@ -51,17 +56,6 @@ class Categories
         return $this;
     }
 
-    public function getSubCategory(): ?self
-    {
-        return $this->SubCategory;
-    }
-
-    public function setSubCategory(?self $SubCategory): self
-    {
-        $this->SubCategory = $SubCategory;
-
-        return $this;
-    }
 
     /**
      * @return Collection<int, self>
@@ -75,7 +69,7 @@ class Categories
     {
         if (!$this->categories->contains($category)) {
             $this->categories->add($category);
-            $category->setSubCategory($this);
+
         }
 
         return $this;
@@ -83,18 +77,19 @@ class Categories
 
     public function removeCategory(self $category): self
     {
-        if ($this->categories->removeElement($category)) {
+        $this->categories->removeElement($category);
             // set the owning side to null (unless already changed)
-            if ($category->getSubCategory() === $this) {
-                $category->setSubCategory(null);
-            }
-        }
+
+
 
         return $this;
     }
 
-    public function __tostring(){
-
+//    public function __tostring(){
+//
+//        return $this->name;
+//    }
+    public function __toString(): string{
         return $this->name;
     }
 
@@ -120,6 +115,63 @@ class Categories
     {
         if ($this->courses->removeElement($course)) {
             $course->removeCategory($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, SubCategory>
+     */
+    public function getSubcategory(): Collection
+    {
+        return $this->subcategory;
+    }
+
+    public function addSubcategory(SubCategory $subcategory): self
+    {
+        if (!$this->subcategory->contains($subcategory)) {
+            $this->subcategory->add($subcategory);
+            $subcategory->setCategories($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSubcategory(SubCategory $subcategory): self
+    {
+        if ($this->subcategory->removeElement($subcategory)) {
+            // set the owning side to null (unless already changed)
+            if ($subcategory->getCategories() === $this) {
+                $subcategory->setCategories(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Teachers>
+     */
+    public function getTeachers(): Collection
+    {
+        return $this->teachers;
+    }
+
+    public function addTeacher(Teachers $teacher): self
+    {
+        if (!$this->teachers->contains($teacher)) {
+            $this->teachers->add($teacher);
+            $teacher->addCategory($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTeacher(Teachers $teacher): self
+    {
+        if ($this->teachers->removeElement($teacher)) {
+            $teacher->removeCategory($this);
         }
 
         return $this;

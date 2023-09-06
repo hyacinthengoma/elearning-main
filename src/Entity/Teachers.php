@@ -59,6 +59,12 @@ class Teachers implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(nullable: true)]
     private array $roles = [];
 
+    #[ORM\ManyToMany(targetEntity: Categories::class, inversedBy: 'teachers')]
+    private Collection $category;
+
+    #[ORM\ManyToMany(targetEntity: SubCategory::class, inversedBy: 'teachers')]
+    private Collection $subcategory;
+
    // #[ORM\Column(length: 255)]
    // private ?string $name = null;
 
@@ -67,6 +73,8 @@ class Teachers implements UserInterface, PasswordAuthenticatedUserInterface
         $this->trainings = new ArrayCollection();
         $this->courses = new ArrayCollection();
         $this->slug_id = new ArrayCollection();
+        $this->category = new ArrayCollection();
+        $this->subcategory = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -328,6 +336,54 @@ class Teachers implements UserInterface, PasswordAuthenticatedUserInterface
     public function setIsVerified(bool $isVerified): self
     {
         $this->isVerified = $isVerified;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Categories>
+     */
+    public function getCategory(): Collection
+    {
+        return $this->category;
+    }
+
+    public function addCategory(Categories $category): self
+    {
+        if (!$this->category->contains($category)) {
+            $this->category->add($category);
+        }
+
+        return $this;
+    }
+
+    public function removeCategory(Categories $category): self
+    {
+        $this->category->removeElement($category);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, SubCategory>
+     */
+    public function getSubcategory(): Collection
+    {
+        return $this->subcategory;
+    }
+
+    public function addSubcategory(SubCategory $subcategory): self
+    {
+        if (!$this->subcategory->contains($subcategory)) {
+            $this->subcategory->add($subcategory);
+        }
+
+        return $this;
+    }
+
+    public function removeSubcategory(SubCategory $subcategory): self
+    {
+        $this->subcategory->removeElement($subcategory);
 
         return $this;
     }

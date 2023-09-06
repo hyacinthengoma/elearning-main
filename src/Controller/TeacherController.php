@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Appointment;
+use App\Entity\Categories;
 use App\Entity\Course;
+use App\Entity\SubCategory;
 use App\Entity\TeacherMetas;
 use App\Entity\Teachers;
 use App\Repository\AppointmentRepository;
@@ -136,6 +138,50 @@ class TeacherController extends AbstractController
         return new JsonResponse($hours);
     }
 
+    /**
+     * @Route("/category/{id}", name="category_subcategory")
+     */
+    public function getSubCategoryByCategory(Categories $categoryId)
+    {
+
+
+        // $subcategory = $this->entityManager->getRepository(SubCategory::class)->findBy(['categories'=>$id]);
+        // dd($subcategory);
+
+
+        $subcategoryData = [];
+        $categories = $this->entityManager->getRepository(Categories::class)->find($categoryId);
+     //   dd($categories);
+
+        $subcategories = $categories->getSubcategory();
+
+        foreach ($subcategories as $subcategory) {
+            if (!$subcategory->getId() == null) {
+                // Traitez ici le cas où la catégorie "Français" n'existe pas
+               // throw $this->createNotFoundException('La catégorie "Français" n\'existe pas.');
+
+            // Vous pouvez accéder aux propriétés de chaque sous-catégorie ici
+            $subcategoryName = $subcategory->getName();
+           // dd($subcategoryName);
+          //  $subcategoryDescription = $subcategory->getDescription();
+
+            // Faites quelque chose avec les données de la sous-catégorie, par exemple, les stocker dans un tableau
+            $subcategoryData[] = [
+                'id' => $subcategory->getId(),
+                'name' => $subcategoryName,
+            //    'description' => $subcategoryDescription,
+            ];
+           // dd($subcategoryData);
+        }
+
+        }
+        return new JsonResponse(['subcategories' => $subcategoryData]);
+       // dd($subcategories);
+       // foreach ($categories as $category) {
+
+       //     dd($category);
+      //  }
+
 
         /* {
          foreach ($appointments as $appointment) {
@@ -166,11 +212,10 @@ class TeacherController extends AbstractController
           *
           }*/
 
-      //  return new JsonResponse($hours);
-
-
+        //  return new JsonResponse($hours);
 
 
         //return $formatted_hours;
+    }
 
 }

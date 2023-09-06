@@ -10,6 +10,7 @@ use App\Entity\CourseMetas;
 use App\Entity\Learners;
 use App\Entity\Level;
 use App\Entity\SubCategories;
+use App\Entity\SubCategory;
 use App\Entity\TeacherMetas;
 use App\Entity\Teachers;
 use App\Entity\Training;
@@ -89,9 +90,10 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Professeurs', 'fa-solid fa-person-chalkboard', Teachers::class);
      //   yield MenuItem::linkToCrud('Description des professeurs', 'fa-solid fa-person-chalkboard', TeacherMetas::class);
         yield MenuItem::linkToCrud('Apprenants', 'fa-duotone fa-graduation-cap', Learners::class);
-        yield MenuItem::linkToCrud('Categories', 'fa-duotone fa-graduation-cap', Categories::class);
         yield MenuItem::linkToCrud('Niveau', 'fa-duotone fa-graduation-cap', Level::class);
         yield MenuItem::linkToCrud('Calendrier', 'fa-duotone fa-graduation-cap', Appointment::class);
+        yield MenuItem::linkToCrud('Categories', 'fa-duotone fa-graduation-cap', Categories::class);
+        yield MenuItem::linkToCrud('Sous catégorie', 'fa-duotone fa-graduation-cap', SubCategory::class);
 
         yield MenuItem::linkToCrud('Administrateur (Moi)', 'fa-solid fa-person-chalkboard', Admin::class);
       //  yield MenuItem::linkToExitImpersonation('Stop impersonation', 'fa fa-exit');

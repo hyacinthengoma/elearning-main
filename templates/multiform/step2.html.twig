@@ -1,0 +1,25 @@
+{% block title  %}{{teacher.name}} {% endblock %}
+
+{% block stylesheets %}
+    <style>
+
+    </style>
+{% endblock %}
+
+{% block content %}
+
+    <body>
+
+    <!-- templates/multiform/step1.html.twig -->
+    <form hx-post="{{ path('app_multiform_step2') }}" hx-trigger="submit">
+        <!-- Les champs de la première étape -->
+        <button type="button" hx-get="{{ path('app_multiform_step2') }}">Étape suivante</button>
+    </form>
+
+    </body>
+
+{% endblock %}
+    {% block javascript %}
+
+    <script src="https://unpkg.com/htmx.org@1.9.4" integrity="sha384-zUfuhFKKZCbHTY6aRR46gxiqszMk5tcHjsVFxnUo8VMus4kHGVdIYVbOYYNlKmHV" crossorigin="anonymous"></script>
+{% endblock %}

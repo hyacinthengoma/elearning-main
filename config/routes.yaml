@@ -6,3 +6,9 @@ appointments_hours:
 controllers:
     resource: ../src/Controller/
     type: attribute
+
+
+api_get_subcategories:
+    path: /category
+    controller: App\Controller\TeacherController::getSubCategoryByCategory
+    methods: [GET]

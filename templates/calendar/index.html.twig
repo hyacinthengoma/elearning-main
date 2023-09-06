@@ -33,14 +33,25 @@
                 <h5 class="modal-title">Sélectionner votre cours avec votre mentor pour l'ajouter au panier</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+            {{ dump(teachers.getSubcategory()) }}
+
             <div class="modal-body">
                 <p>Début du cours sélectionné : <span class="start-value"></span></p>
                 <p>Fin du cours sélectionné : <span class="end-value"></span></p>
                 <select class="form-control form-control-md mt-3" aria-label="Large select example">
                     <option selected>Sélectionner le cours avec votre mentor :</option>
-                    <option value="1">React</option>
-                    <option value="2">Symfony</option>
-                    <option value="3">Javascript</option>
+                    {% for sub in teachers.getSubcategory() %}
+                        <option value="{{ sub.id }}" class="select_subcategory">{{ sub.name }}</option>
+                      {#   {{ dump(sub.name) }}#}
+                    {% endfor %}
+
+                  {#  <option selected>Sélectionner le cours avec votre mentor :</option>
+                    {% for subcategory in subcategories %}
+                    <option value="{{ subcategory.id }}">{{ subcategory.name }}</option>
+
+
+                    {% endfor %}
+                  #}
                 </select>
             </div>
             <div class="modal-footer">
@@ -728,6 +739,7 @@ console.log(planning);
                 //ce code ci-dessous permet de récupérer la start et le end du cours sélectionné dans le calendrier
                 var start = event.event.start;
                 var end = event.event.end;
+                var selectedValue = $('.select_subcategory').val();
                 // Convertissez les valeurs start et end en format lisible
                 var formattedStart = start.toLocaleString();
                 var formattedEnd = end.toLocaleString();
@@ -735,6 +747,17 @@ console.log(planning);
                 // Insérez les valeurs dans les balises <input>
                 $('#booking_popup p:eq(0)').text('Début du cours sélectionné : ' + formattedStart);
                 $('#booking_popup p:eq(1)').text('Fin du cours sélectionné : ' + formattedEnd);
+              //  $('.select_subcategory select:eq(2)').text('Intitulé du cours sélectionné : ' + selectedValue);
+                // Récupérez la valeur sélectionnée du select
+
+                // Assurez-vous que la valeur sélectionnée n'est pas "Sélectionner le cours avec votre mentor :"
+               // if (selectedValue !== "Sélectionner le cours avec votre mentor :") {
+                    // Ajoutez la valeur sélectionnée au tableau basket
+               //     basket.push(selectedValue);
+              //  }
+
+
+
 
 
                   $('#booking_popup').modal('show');
@@ -752,9 +775,14 @@ console.log(planning);
                 positionClass: 'toast-top-left', // Choisissez la position de la notification
                 closeButton: true, // Affiche le bouton de fermeture
 };
-                basket.push(event.event.title);
+              //  basket.push(event.event.title);
+                 if (selectedValue !== "Sélectionner le cours avec votre mentor :") {
+                    // Ajoutez la valeur sélectionnée au tableau basket
+                   basket.push(selectedValue);
+                }
                 basket.push(event.event.start);
                 basket.push(event.event.end);
+               // basket.push(selectedValue);
                 const panierContainer = document.getElementById('liste-panier');
                 localStorage.setItem('basket', JSON.stringify(basket));
 

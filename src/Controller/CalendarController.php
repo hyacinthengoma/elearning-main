@@ -27,6 +27,8 @@ class CalendarController extends AbstractController
     public function index($slug, AppointmentRepository $appointment,Teachers $teacherResa): Response
     {
         $teachers = $this->entityManager->getRepository(Teachers::class)->findOneBySlug($slug);
+       // $teachers = $this->entityManager->getRepository(Teachers::class)->findOneBy(['teachers' => $teacherResa]);
+        //dd($teachers);
         $events = $this->entityManager->getRepository(Appointment::class)->findOneBy(['teachers' => $teacherResa]);
         //dd($events);
         if ($events !== null) {
@@ -45,9 +47,19 @@ class CalendarController extends AbstractController
         $appointmentsbyteachersrefs = $appointmentsbyteachers->getId();
         //  dd($appointmentsbyteachersrefs);
 
+
+        $subcategories = $this->entityManager
+            ->createQueryBuilder()
+            ->select('s')
+            ->from('App\Entity\SubCategory', 's')
+            ->innerJoin('s.teachers', 't')
+            ->getQuery()
+            ->getResult();
+//dd($subcategories);
         return $this->render('calendar/index.html.twig',[
             'teacher_id'=>$appointmentsbyteachersrefs,
-            'teachers' => $teachers
+            'teachers' => $teachers,
+            'subcategories' =>$subcategories
         ]);
 
 

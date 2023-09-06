@@ -53,7 +53,7 @@
 
 
     {% block stylesheets %}
-                {{ encore_entry_link_tags('app') }}
+        {#   {{ encore_entry_link_tags('app') }} #}
     {% endblock %}
 
 
@@ -332,6 +332,10 @@
     <script src="{{ asset('assets/js/slick.min.js') }}"></script>
     <!-- main js -->
     <script src="{{ asset('assets/js/main.js') }}"></script>
+
+
+   {#  <script src="{{ asset('assets/js/app.js') }}"></script> #}
+
     </body>
 {% endblock %}
 </html>

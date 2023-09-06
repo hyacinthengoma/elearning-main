@@ -720,9 +720,11 @@
         if (basketData && basketData.length > 0) {
             // Parcourir les données et afficher chaque événement
             for (let i = 0; i < basketData.length; i += 3) {
-                const title = basketData[i];
+               // const title = basketData[i];
                 const start = formatDateWithoutSeconds(basketData[i + 1]); // Utilisez la fonction formatDateWithoutSeconds pour formater la date
                 const end = formatDateWithoutSeconds(basketData[i + 2]);   // Utilisez la fonction formatDateWithoutSeconds pour formater la date
+                const selectedValue = basketData[i];
+
 
                 // Créer des éléments HTML pour afficher les informations
                 const eventDiv = document.createElement('div');
@@ -739,9 +741,10 @@
                                         <div class="content">
                                             <div class="left-content">
                                                 <h4 class="title">
-                                                    <a href="#">Titre: ${title}</a>
+                                                    <a href="#">Titre:  ${selectedValue}</a>
                                                     <p href="#">Début: ${start}</p>
                                                     <p href="#">Fin: ${end}</p>
+
                                                 </h4>
 
                                                 <div class="rating-and-enrolled">
