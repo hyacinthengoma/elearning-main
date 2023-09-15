@@ -1,20 +1,16 @@
 {% extends 'base.html.twig' %}
-{% block title  %}{{teacher.name}} {% endblock %}
+{% block title %}{{ teacher.name }} {% endblock %}
 
 {% block stylesheets %}
     <style>
-        #calendar{
-
+        #calendar {
 
         }
-
 
     </style>
 {% endblock %}
 
 {% block content %}
-
-
 
 
     <body>
@@ -53,16 +49,15 @@
             <!-- about area start here  -->
 
 
-
             <section class="about-section-area-wrapper section-bottom-space">
 
-                {#PANIER  #}
+                {# PANIER  #}
                 <div id="panier">
                     <ul id="liste-panier">
                         <!-- Les événements du panier seront affichés ici sous forme de liste -->
                     </ul>
                 </div>
-                {#PANIER  #}
+                {# PANIER  #}
 
                 <div class="container custom-container-01">
                     <div class="row align-items-center row-reverse">
@@ -70,28 +65,13 @@
                             <div class="about-content">
                                 <h3 class="content-title" style="margin-top:15rem">Informations sur le professeur</h3>
 
-
                                 {#    <p class="paragraph">{{ teachers.description.descriptionComplete }}
                                 </p>
                                 #}
 
-
-
-
-
                                 {# {{ dump(data) }} #}
 
-
-
-
-
                                 <div id="eventDetails"></div>
-
-
-
-
-
-
 
                                 <div class="check-point-wrap">
                                     <p class="details-title">Clients and publications include:</p>
@@ -143,18 +123,12 @@
                         </div>
 
 
-
-
-
-
                         <div class="offset-xl-1 col-lg-6 col-md-7 col-xl-4">
                             <div class="single-instructor-details-wrap" style="width: 40rem;">
                                 <div class="thumb">
-                                    <img src="/uploads/{{ teachers.illustration }}" alt="{{ teachers.name }}" />
+                                    <img src="/uploads/{{ teachers.illustration }}" alt="{{ teachers.name }}"/>
                                 </div>
                                 <div id="calendar"></div>
-
-
 
 
                                 <div class="content">
@@ -167,12 +141,10 @@
 
 
                                     {#
-
-
                                     <div id="calendar"></div>
 
                                       <div id="eventDetails"></div>
-                                    Ò#}
+                                    Ò #}
 
 
 
@@ -192,8 +164,10 @@
                                         </div>
                                         <div class="student-wrap">
 
-                                           {#  <button id="showCalendarButton">Prendre <br />rendez-vous</button>#}
-                                            <button type="button" class="prendre-rendez-vous btn btn-info btn-lg" data-professor-id="{{ teacher_id }}">Prendre <br />rendez-vous</button>
+                                            {#  <button id="showCalendarButton">Prendre <br />rendez-vous</button> #}
+                                            <button type="button" class="prendre-rendez-vous btn btn-info btn-lg"
+                                                    data-professor-id="{{ teacher_id }}">Prendre <br/>rendez-vous
+                                            </button>
                                         </div>
                                         <div class="review-wrap">
                                             <span class="number">4.5</span>
@@ -211,7 +185,7 @@
                                             {% set i = 0 %}
                                         <select multiple size="5" class="custom-select open" style="width:100% !important;display:flex !important;justify-content: center !important;font-size: 16px;padding-top: 247rem; " value="">
                                             {% for i, hour in hours %}
-                                               {#  <option value="{{ i }}">{{ hour }}</option>#}
+                                               {#  <option value="{{ i }}">{{ hour }}</option> #}
 
                                 {#
                                 <span style="margin-top: 1rem;">
@@ -249,9 +223,7 @@
                                name="meeting-time" value="2023-06-12T19:30"
                                min="2018-06-07T00:00" max="2030-06-14T00:00">
                     </div>
-
                     #}
-
 
 
                     <ul class="ul social-media-list style-01 color-02">
@@ -801,7 +773,8 @@
 
 
     <script src='fullcalendar/dist/index.global.js'></script>
-    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js" integrity="sha256-8EcfIJRWyvnu/U0OsfCk05x1JGVmeC2a7sJQHrbWYSA=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"
+            integrity="sha256-8EcfIJRWyvnu/U0OsfCk05x1JGVmeC2a7sJQHrbWYSA=" crossorigin="anonymous"></script>
     {% block javascript %}
 
 

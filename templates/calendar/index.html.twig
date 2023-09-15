@@ -38,10 +38,10 @@
             <div class="modal-body">
                 <p>Début du cours sélectionné : <span class="start-value"></span></p>
                 <p>Fin du cours sélectionné : <span class="end-value"></span></p>
-                <select class="form-control form-control-md mt-3" aria-label="Large select example">
+                <select id="subcategorySelect" class="form-control form-control-md mt-3" aria-label="Large select example">
                     <option selected>Sélectionner le cours avec votre mentor :</option>
                     {% for sub in teachers.getSubcategory() %}
-                        <option value="{{ sub.id }}" class="select_subcategory">{{ sub.name }}</option>
+                        <option value="{{ sub.name }}" class="select_subcategory">{{ sub.name }}</option>
                       {#   {{ dump(sub.name) }}#}
                     {% endfor %}
 
@@ -53,6 +53,7 @@
                     {% endfor %}
                   #}
                 </select>
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Abandonner</button>
@@ -739,7 +740,13 @@ console.log(planning);
                 //ce code ci-dessous permet de récupérer la start et le end du cours sélectionné dans le calendrier
                 var start = event.event.start;
                 var end = event.event.end;
-                var selectedValue = $('.select_subcategory').val();
+                var selectedValue = '';
+                $('#subcategorySelect').change(function() {
+                // Mettez à jour la variable selectedValue avec la valeur sélectionnée
+                selectedValue = $(this).val();
+            });
+
+               // var selectedValue = $('.select_subcategory').val();
                 // Convertissez les valeurs start et end en format lisible
                 var formattedStart = start.toLocaleString();
                 var formattedEnd = end.toLocaleString();
@@ -779,10 +786,11 @@ console.log(planning);
                  if (selectedValue !== "Sélectionner le cours avec votre mentor :") {
                     // Ajoutez la valeur sélectionnée au tableau basket
                    basket.push(selectedValue);
-                }
+                 }
                 basket.push(event.event.start);
                 basket.push(event.event.end);
-               // basket.push(selectedValue);
+
+                //basket.push(selectedValue);
                 const panierContainer = document.getElementById('liste-panier');
                 localStorage.setItem('basket', JSON.stringify(basket));
 
