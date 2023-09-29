@@ -3,13 +3,6 @@
 
 
 
-<div>
-
-
-
-
-
-
 
 
 
@@ -702,11 +695,11 @@
 
 </script>
 #}
-
+    {{ dump(app) }}
 
     <script>
         // Récupérer les données du local storage
-        const basketData = JSON.parse(localStorage.getItem('basket'));
+        let basketData = JSON.parse(localStorage.getItem('basket'));
         const panierDiv = document.getElementById('panier');
 
         // Fonction pour formater une date en français (jour, mois, année, heure sans secondes)
@@ -716,19 +709,24 @@
             return date.toLocaleDateString('fr-FR', options);
         }
 
-        // Vérifier si le panier n'est pas vide
-        if (basketData && basketData.length > 0) {
-            // Parcourir les données et afficher chaque événement
-            for (let i = 0; i < basketData.length; i += 3) {
-               // const title = basketData[i];
-                const start = formatDateWithoutSeconds(basketData[i + 1]); // Utilisez la fonction formatDateWithoutSeconds pour formater la date
-                const end = formatDateWithoutSeconds(basketData[i + 2]);   // Utilisez la fonction formatDateWithoutSeconds pour formater la date
-                const selectedValue = basketData[i];
+        // Fonction pour afficher les éléments du panier
+        function displayBasket() {
+            panierDiv.innerHTML = ''; // Effacer le contenu du panierDiv
 
+            // Vérifier si le panier n'est pas vide
+            if (!basketData || basketData.length === 0) {
+                panierDiv.innerHTML = 'Le panier est vide.';
+            } else {
+                // Parcourir les données et afficher chaque événement
+                for (let i = 0; i < basketData.length; i += 3) {
+                    const selectedValue = basketData[i];
+                    const start = formatDateWithoutSeconds(basketData[i + 1]);
+                    const end = formatDateWithoutSeconds(basketData[i + 2]);
 
-                // Créer des éléments HTML pour afficher les informations
-                const eventDiv = document.createElement('div');
-                eventDiv.innerHTML = `
+                    // Créer des éléments HTML pour afficher les informations
+                    const eventDiv = document.createElement('div');
+                    eventDiv.innerHTML = `
+
                 <div class="container custom-container-01">
                     <div class="row">
                         <div class="col-lg-12">
@@ -736,17 +734,16 @@
                                 <ul class="ul simillar-course-list style-02 mt-0">
                                     <li class="single-simillar-course-item">
                                         <div class="thumb">
-                                            <img src="assets/img/related-course/04.jpg" alt="">
+
+                                            <img src="/assets/img/Logos/logo4.png" alt="">
                                         </div>
                                         <div class="content">
                                             <div class="left-content">
                                                 <h4 class="title">
-                                                    <a href="#">Titre:  ${selectedValue}</a>
-                                                    <p href="#">Début: ${start}</p>
-                                                    <p href="#">Fin: ${end}</p>
-
+                                                    <a href="#">Nom du cours:  ${selectedValue}</a>
+                                                    <p href="#">Heure de début du cours: ${start}</p>
+                                                    <p href="#">Heure de fin du cours : ${end}</p>
                                                 </h4>
-
                                                 <div class="rating-and-enrolled">
                                                     <div class="rating-wrap">
                                                         <span class="star">
@@ -761,7 +758,7 @@
                                                 </div>
                                             </div>
                                             <div class="right-content">
-                                                <span class="remove">Supprimer</span>
+                                                <span class="remove" onclick="confirmRemoveItem(${i})">Supprimer</span>
                                                 <span class="price">XOF 25.50</span>
                                             </div>
                                         </div>
@@ -773,14 +770,48 @@
                 </div>
             `;
 
-                // Ajouter l'élément au div du panier
-                panierDiv.appendChild(eventDiv);
+                    // Ajouter l'élément au div du panier
+                    panierDiv.appendChild(eventDiv);
+
+                    // Planifier la suppression de l'événement du panier après 15 minutes
+                    setTimeout(() => {
+                        removeItem(i);
+                    }, 15 * 60 * 1000); // 15 minutes en millisecondes
+                }
             }
-        } else {
-            panierDiv.innerHTML = 'Le panier est vide.';
         }
 
+        // Fonction pour confirmer la suppression d'un élément du panier
+        function confirmRemoveItem(index) {
+            if (confirm("Voulez-vous vraiment supprimer cet élément du panier ?")) {
+                removeItem(index);
+            }
+        }
+
+        // Fonction pour supprimer un élément du panier
+        function removeItem(index) {
+            // Retirez les trois éléments associés du panierData
+            basketData.splice(index, 3);
+
+            // Mettez à jour le local storage avec les données mises à jour
+            if (basketData.length === 0) {
+                // Si le panier est maintenant vide, supprimez la clé "basket" du localStorage
+                localStorage.removeItem('basket');
+            } else {
+                localStorage.setItem('basket', JSON.stringify(basketData));
+            }
+
+            // Appeler la fonction pour afficher le panier à jour
+            displayBasket();
+        }
+
+        // Appeler la fonction initiale pour afficher le panier
+        displayBasket();
     </script>
+
+
+
+
 
 
 

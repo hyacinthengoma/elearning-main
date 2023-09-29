@@ -29,6 +29,7 @@ class Appointment
     #[ORM\OneToOne(inversedBy: 'appointment', cascade: ['persist', 'remove'])]
     private ?Course $course_id = null;
 
+
     public function getId(): ?int
     {
         return $this->id;
@@ -93,4 +94,5 @@ class Appointment
 
         return $this;
     }
+
 }

@@ -787,6 +787,9 @@ console.log(planning);
                     // Ajoutez la valeur sélectionnée au tableau basket
                    basket.push(selectedValue);
                  }
+                 //else{
+                   //  toastr.warning("veuillez confirmer un choix");
+                 //}
                 basket.push(event.event.start);
                 basket.push(event.event.end);
 
@@ -863,17 +866,18 @@ console.log(planning);
             headerToolbar: {
                 start: 'prev,next today',
                 center: 'title',
-                end: 'dayGridMonth,timeGridWeek,listWeek',
+              //  end: 'dayGridMonth,timeGridWeek,listWeek',
+                end: 'timeGridWeek,listWeek',
             },
             buttonText: {
                 today: 'Aujourd\'hui',
-                month: 'Mois',
+              //  month: 'Mois',
+                list: 'Liste des créneaux disponibles',
                 week: 'Semaine',
-                list: 'Liste'
             },
 
-            editable: true,
-            selectable: true,
+           // editable: true,
+            selectable: false,
             navLinks: true,
             eventDrop:(infos) => {
                 if(!confirm("Etes vous sur de vouloir déplacer cet évènement")){
@@ -882,7 +886,21 @@ console.log(planning);
                 }else
                 console.log(infos.event.start)
             },
-            dateClick: function(start,end,allDays) {
+
+            dateClick: function(start,end,allDays,info) {
+                var selectedDate = info.date;
+                var hasEvent = planning.some(event => {
+                  return (
+                    selectedDate >= event.start &&
+                    selectedDate < event.end
+                  );
+                });
+
+                // Si la date n'a pas d'événement, empêchez l'action par défaut (le clic)
+                if (!hasEvent) {
+                  return false;
+                }
+
                 $('#booking_popup').modal('show');
                 //console.log(start,end);
                //  console.log('Resource ID: ' + info.title);

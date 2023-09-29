@@ -2,6 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\TeacherMetas;
+use App\Entity\Teachers;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -9,6 +12,12 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class CartController extends AbstractController
 {
+    private $entityManager;
+
+    public function __construct(EntityManagerInterface $entityManager)
+    {
+        $this->entityManager = $entityManager;
+    }
     #[Route('/panier', name: 'cart')]
     public function index(Request $request): Response
     {
@@ -17,6 +26,7 @@ class CartController extends AbstractController
 
         return $this->render('cart/index.html.twig', [
             'events' => $panier,
+            'teachers' => $this->entityManager->getRepository(Teachers::class)->findAll()
         ]);
     }
 
