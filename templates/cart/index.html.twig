@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %}
-{% block content%}
+{% block content %}
 
 
 
@@ -82,7 +82,46 @@
                             <div class="breadcrumb-content">
                                 <h3 class="title">Panier</h3>
                                 <p class="details">4 articles dans le panier</p>
+<br /> <br />
+                                {% for hour in hours %}
+                                    <div>
+                                        <p>ID: {{ hour.id }}</p>
+                                        <p>Start: {{ hour.start }}</p>
+                                        <p>End: {{ hour.end }}</p>
+                                        <p>Title: {{ hour.title }}</p>
+                                        <p>Price: {{ hour.price }}</p>
+                                    </div>
+                                {% endfor %}
+                                {% if appointments is not empty %}
+                                    {% for item in appointments %}
+                                        <div class="appointment-item">
+                                            {% if item.appointments[0] is defined %}
+                                                <h2>Title: {{ item.appointments[0].title }}</h2>
+                                                <p>ID: {{ item.appointments[0].id }}</p>
+                                                <p>Heure de début du cours: {{ item.appointments[0].start|date("l d F Y à H:i") }}</p>
+                                                <p>Heure de fin du cours: {{ item.appointments[0].end|date("l d F Y à H:i") }}</p>
+                                                <p>Quantity: {{ item.quantity }}</p>
+                                                <p>Tarif: {{ item.appointments[0].price / 100 }} Franc FCA</p>
+                                                <p>Professeur: {{ item.appointments[0].teachers.firstname }} {{ item.appointments[0].teachers.lastname }}</p>
+                                                <img src="/uploads/{{ item.appointments[0].teachers.illustration }}" alt="">
+                                                <p><a href="{{ path('cart_remove', {'id' : item.appointments[0].id}) }}" class="btn btn-danger">
+                                                <i class="fas fa-trash"></i>
+                                                </a></p>
+                                            {% else %}
+                                                <p>Données manquantes pour cet élément</p>
+                                            {% endif %}
+                                        </div>
+                                    {% endfor %}
+                                   Prix total :  {{ total }} Franc CFA
+                                {% else %}
+                                    <p>Le panier est vide.</p>
+                                {% endif %}
 
+
+
+
+
+                                <hr>
                                 <div id="panier">
                                     <ul id="liste-panier">
                                         <!-- Les événements du panier seront affichés ici sous forme de liste -->
@@ -109,7 +148,7 @@
                             <div class="col-lg-12">
                                 <div class="checkout-wrap">
                                     <span class="total">Total</span>
-                                    <span class="price">XOF 169.98</span>
+                                    <span class="price" id="total-price">XOF 169.98</span>
                                     <span class="text">Avez-vous un code de réduction ?</span>
                                     <div class="copun-box">
                                         <input type="text" placeholder="Entrer le code du coupon">
@@ -695,12 +734,14 @@
 
 </script>
 #}
-    {{ dump(app) }}
+    {{ dump(app.user) }}
+
 
     <script>
         // Récupérer les données du local storage
         let basketData = JSON.parse(localStorage.getItem('basket'));
         const panierDiv = document.getElementById('panier');
+        const totalPriceElement = document.getElementById('total-price');
 
         // Fonction pour formater une date en français (jour, mois, année, heure sans secondes)
         function formatDateWithoutSeconds(dateString) {
@@ -718,10 +759,11 @@
                 panierDiv.innerHTML = 'Le panier est vide.';
             } else {
                 // Parcourir les données et afficher chaque événement
-                for (let i = 0; i < basketData.length; i += 3) {
+                for (let i = 0; i < basketData.length; i += 4) {
                     const selectedValue = basketData[i];
                     const start = formatDateWithoutSeconds(basketData[i + 1]);
                     const end = formatDateWithoutSeconds(basketData[i + 2]);
+                    const price = (basketData[i + 3]);
 
                     // Créer des éléments HTML pour afficher les informations
                     const eventDiv = document.createElement('div');
@@ -743,6 +785,8 @@
                                                     <a href="#">Nom du cours:  ${selectedValue}</a>
                                                     <p href="#">Heure de début du cours: ${start}</p>
                                                     <p href="#">Heure de fin du cours : ${end}</p>
+
+
                                                 </h4>
                                                 <div class="rating-and-enrolled">
                                                     <div class="rating-wrap">
@@ -759,7 +803,7 @@
                                             </div>
                                             <div class="right-content">
                                                 <span class="remove" onclick="confirmRemoveItem(${i})">Supprimer</span>
-                                                <span class="price">XOF 25.50</span>
+                                                <span class="price">XOF ${price}</span>
                                             </div>
                                         </div>
                                     </li>
@@ -779,7 +823,26 @@
                     }, 15 * 60 * 1000); // 15 minutes en millisecondes
                 }
             }
+            // Calculer et afficher le prix total
+            calculateTotalPrice();
         }
+
+        // Fonction pour calculer le prix total des produits dans le panier
+        function calculateTotalPrice() {
+            let total = 0;
+
+            for (let i = 0; i < basketData.length; i += 4) {
+                const price = parseFloat(basketData[i + 3]); // Convertir le prix en nombre
+
+                if (!isNaN(price)) {
+                    total += price;
+                }
+            }
+
+            // Afficher le prix total
+            totalPriceElement.textContent = `XOF ${total}`;
+        }
+
 
         // Fonction pour confirmer la suppression d'un élément du panier
         function confirmRemoveItem(index) {

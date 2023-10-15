@@ -29,6 +29,9 @@ class Appointment
     #[ORM\OneToOne(inversedBy: 'appointment', cascade: ['persist', 'remove'])]
     private ?Course $course_id = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?float $price = null;
+
 
     public function getId(): ?int
     {
@@ -91,6 +94,18 @@ class Appointment
     public function setCourseId(?Course $course_id): self
     {
         $this->course_id = $course_id;
+
+        return $this;
+    }
+
+    public function getPrice(): ?float
+    {
+        return $this->price;
+    }
+
+    public function setPrice(?float $price): self
+    {
+        $this->price = $price;
 
         return $this;
     }

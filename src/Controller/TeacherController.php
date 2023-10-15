@@ -103,7 +103,6 @@ class TeacherController extends AbstractController
     public function getAppointmentHours(int $id)
     {
         $appointments = $this->entityManager->getRepository(Appointment::class)->findBy(['teachers'=>$id]);
-
         $hours = [];
         $intervalId = 0;
 
@@ -124,10 +123,11 @@ class TeacherController extends AbstractController
                     }
 
                     $hours[] = [
-                        'id' => $appointment->getId() . '-' . $intervalId++,
+                        'id' => $appointment->getId() . '' . $intervalId++,
                         'start' => $currentHour->format('Y-m-d H:i:s'),
                         'end' => $nextHour->format('Y-m-d H:i:s'),
                         'title' => $appointment->getTitle(),
+                        'price' => $appointment->getPrice(),
                     ];
 //dd($hours);
                     $currentHour = clone $nextHour;
@@ -135,8 +135,12 @@ class TeacherController extends AbstractController
             }
         }
 
+
+//dd($hours);
         return new JsonResponse($hours);
+
     }
+
 
     /**
      * @Route("/category/{id}", name="category_subcategory")

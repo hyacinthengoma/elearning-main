@@ -58,6 +58,22 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Abandonner</button>
                 <button type="button" id="add-to-cart-button" class="btn btn-primary">Ajouter au panier</button>
+                {% if appointments is not empty %}
+                    {% for item in appointments %}
+                    {% if item.appointments[0] is defined %}
+                        <button type="button" class="btn btn-primary">
+                            <a href="{{ path('cart_calendar_add', {'id': item.appointments[0].id}) }}">Ajouter au panier</a>
+                        </button>
+
+                    {% else %}
+                        <p>Données manquantes pour cet élément</p>
+                {% endif %}
+
+            {% endfor %}
+            Prix total :  {{ total }} Franc CFA
+            {% else %}
+                 <p>Le panier est vide.</p>
+            {% endif %}
             </div>
         </div>
     </div>
@@ -727,6 +743,7 @@
             title: current_obj.title,
             start: current_obj.start,
             end: current_obj.end,
+            price: current_obj.price/100,
         }));
 console.log(planning);
        // const basket = [];
@@ -740,6 +757,7 @@ console.log(planning);
                 //ce code ci-dessous permet de récupérer la start et le end du cours sélectionné dans le calendrier
                 var start = event.event.start;
                 var end = event.event.end;
+                var price = event.event.price;
                 var selectedValue = '';
                 $('#subcategorySelect').change(function() {
                 // Mettez à jour la variable selectedValue avec la valeur sélectionnée
@@ -786,12 +804,21 @@ console.log(planning);
                  if (selectedValue !== "Sélectionner le cours avec votre mentor :") {
                     // Ajoutez la valeur sélectionnée au tableau basket
                    basket.push(selectedValue);
+
+                  //  var eventPrice = event.event.extendedProps.price;
+
+                          //  basket.push(eventPrice); // Ajout du prix au panier);
+
+
                  }
                  //else{
                    //  toastr.warning("veuillez confirmer un choix");
                  //}
                 basket.push(event.event.start);
                 basket.push(event.event.end);
+                basket.push(event.event.extendedProps.price);
+
+
 
                 //basket.push(selectedValue);
                 const panierContainer = document.getElementById('liste-panier');

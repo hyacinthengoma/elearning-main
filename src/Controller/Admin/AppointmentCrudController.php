@@ -28,6 +28,7 @@ class AppointmentCrudController extends AbstractCrudController
             DateTimeField::new('start'),
             DateTimeField::new('end'),
             AssociationField::new('teachers'),
+            MoneyField::new('price')->setCurrency('XOF'),
 
 
 
